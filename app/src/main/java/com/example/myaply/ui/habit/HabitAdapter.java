@@ -35,6 +35,14 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
         Habit habit = habitList.get(position);
         holder.tvName.setText(habit.getName());
         holder.tvFrequency.setText("Frecuencia: " + habit.getFrequency());
+
+        holder.itemView.setOnLongClickListener(v -> {
+            if (longClickListener != null) {
+                longClickListener.onHabitLongClick(habit);
+                return true;
+            }
+            return false;
+        });
     }
 
     @Override
@@ -51,4 +59,16 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
             tvFrequency = itemView.findViewById(R.id.tv_habit_frequency);
         }
     }
+
+
+    public interface OnHabitLongClickListener {
+        void onHabitLongClick(Habit habit);
+    }
+
+    private OnHabitLongClickListener longClickListener;
+
+    public void setOnHabitLongClickListener(OnHabitLongClickListener listener) {
+        this.longClickListener = listener;
+    }
+
 }

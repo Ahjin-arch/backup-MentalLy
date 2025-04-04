@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -85,6 +86,20 @@ public class HabitFragment extends Fragment {
             progressBar.setProgress(progreso);
             tvProgress.setText(progreso + "%");
         });
+
+
+        habitAdapter.setOnHabitLongClickListener(habit -> {
+            new AlertDialog.Builder(getContext())
+                    .setTitle("Eliminar Hábito")
+                    .setMessage("¿Estás seguro de que deseas eliminar este hábito?")
+                    .setPositiveButton("Sí", (dialog, which) -> {
+                        habitViewModel.deleteHabit(habit);
+                        Toast.makeText(getContext(), "Hábito eliminado", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Cancelar", null)
+                    .show();
+        });
+
 
 
 

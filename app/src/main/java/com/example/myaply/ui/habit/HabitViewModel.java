@@ -31,4 +31,9 @@ public class HabitViewModel extends AndroidViewModel {
     public void insertHabit(Habit habit) {
         new Thread(() -> habitDao.insertHabit(habit)).start(); // Ejecutar en hilo para evitar bloquear la UI
     }
+
+    public void deleteHabit(Habit habit) {
+        new Thread(() -> habitDao.deleteHabit(habit)).start();
+    }
+
 }

@@ -2,6 +2,7 @@ package com.example.myaply.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -15,4 +16,8 @@ public interface HabitDao {
 
     @Query("SELECT * FROM habits ORDER BY id DESC")
     LiveData<List<Habit>> getAllHabits();
+
+    @Delete
+    void deleteHabit(Habit habit);
+
 }

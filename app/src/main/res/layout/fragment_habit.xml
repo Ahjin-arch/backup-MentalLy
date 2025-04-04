@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.habit.HabitFragment"
+        android:padding="16dp">
+
+        <!-- Título de la pantalla -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro de Hábitos"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Campo para ingresar nombre del hábito -->
+        <EditText
+            android:id="@+id/et_habit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Escribe tu hábito"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+
+            />
+        <!--  android:background="@drawable/edit_text_background"-->
+
+
+        <!-- Selector de frecuencia (ejemplo: diario, semanal) -->
+        <Spinner
+            android:id="@+id/spinner_frequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Botón para agregar el hábito -->
+        <Button
+            android:id="@+id/btn_add_habit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar Hábito"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:textSize="18sp" />
+
+        <!-- Barra de progreso para ver el avance -->
+        <TextView
+            android:id="@+id/tv_progress_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Progreso:"
+            android:textSize="16sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="0"
+            android:max="100"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Texto que muestra el porcentaje del progreso android:progressDrawable="@drawable/progress_bar"-->
+        <TextView
+            android:id="@+id/tv_progress_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0%"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hábitos guardados:"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_habits"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+

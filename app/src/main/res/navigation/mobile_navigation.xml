@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_relax"
-        android:name="com.example.myaply.ui.relax.RelaxFragment"
+        android:name="com.example.myaply.ui.emotioncalendar.EmotionCalendarFragment"
         android:label="@string/relax"
-        tools:layout="@layout/fragment_relax" />
+        tools:layout="@layout/fragment_emotion_calendar" />
     <fragment
         android:id="@+id/navigation_emotion"
         android:name="com.example.myaply.ui.emotion.EmotionFragment"

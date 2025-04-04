@@ -4,4 +4,7 @@
     <string name="habits">Hábitos</string>
     <string name="relax">Relajación</string>
     <string name="emotion">Emociones</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -27,13 +27,22 @@ public class HabitViewModel extends AndroidViewModel {
     public LiveData<List<Habit>> getAllHabits() {
         return allHabits;
     }
-
-    public void insertHabit(Habit habit) {
-        new Thread(() -> habitDao.insertHabit(habit)).start(); // Ejecutar en hilo para evitar bloquear la UI
-    }
-
     public void deleteHabit(Habit habit) {
         new Thread(() -> habitDao.deleteHabit(habit)).start();
     }
+
+    public void markHabitAsDone(Habit habit) {
+        new Thread(() -> {
+            int newProgress = habit.getProgress() + 10; // o el valor que quieras aumentar
+            if (newProgress > 100) newProgress = 100; // para no pasar de 100
+            habitDao.updateProgress(habit.getId(), newProgress);
+        }).start();
+    }
+
+    public void insertHabit(Habit habit) {
+        new Thread(() -> habitDao.insertHabit(habit)).start();
+    }
+
+
 
 }

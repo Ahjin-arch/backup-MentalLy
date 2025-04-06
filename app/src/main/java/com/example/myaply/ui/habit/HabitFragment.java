@@ -22,14 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myaply.R;
 import com.example.myaply.data.Habit;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HabitFragment extends Fragment {
-
     private HabitViewModel habitViewModel;
-    private EditText etHabitName;
-    private Spinner spinnerFrequency;
-    private Button btnAddHabit;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -38,58 +34,19 @@ public class HabitFragment extends Fragment {
 
         // Inicializar ViewModel
         habitViewModel = new ViewModelProvider(this).get(HabitViewModel.class);
-
-        // Referenciar elementos de la UI
-        etHabitName = view.findViewById(R.id.et_habit_name);
-        spinnerFrequency = view.findViewById(R.id.spinner_frequency);
-        btnAddHabit = view.findViewById(R.id.btn_add_habit);
-        //opciones de espiiner
-        String[] opciones = new String[]{"Diario", "Semanal"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, opciones);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerFrequency.setAdapter(adapter);
-
-        // Agregar listener al botón
-        btnAddHabit.setOnClickListener(v -> {
-            String habitName = etHabitName.getText().toString().trim();
-            String frequency = spinnerFrequency.getSelectedItem().toString();
-
-            if (habitName.isEmpty()) {
-                Toast.makeText(getContext(), "Por favor, escribe un hábito.", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            Habit newHabit = new Habit(habitName, frequency);
-            habitViewModel.insertHabit(newHabit);
-
-            Toast.makeText(getContext(), "¡Hábito agregado!", Toast.LENGTH_SHORT).show();
-            etHabitName.setText(""); // Limpiar campo
-            spinnerFrequency.setSelection(0); // Reiniciar spinner
-        });
-
-
-
         RecyclerView recyclerView = view.findViewById(R.id.recycler_habits);
         HabitAdapter habitAdapter = new HabitAdapter();
         recyclerView.setAdapter(habitAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        //inicializamos el spinner
+
+
 // Observar cambios de hábitos y actualizar la lista
-        habitViewModel.getAllHabits().observe(getViewLifecycleOwner(), habits -> {
-            habitAdapter.setHabitList(habits);
-
-            // Extra: Actualizar progreso
-            int progreso = (int) ((habits.size() / 10.0) * 100); // Máximo 10 hábitos
-            ProgressBar progressBar = view.findViewById(R.id.progress_bar);
-            TextView tvProgress = view.findViewById(R.id.tv_progress_percentage);
-
-            progressBar.setProgress(progreso);
-            tvProgress.setText(progreso + "%");
-        });
-
-
+        habitViewModel.getAllHabits().observe(getViewLifecycleOwner(), habitAdapter::setHabitList);
+        //dialog para elimianr
         habitAdapter.setOnHabitLongClickListener(habit -> {
-            new AlertDialog.Builder(getContext())
+            new AlertDialog.Builder(requireContext())
                     .setTitle("Eliminar Hábito")
                     .setMessage("¿Estás seguro de que deseas eliminar este hábito?")
                     .setPositiveButton("Sí", (dialog, which) -> {
@@ -99,10 +56,48 @@ public class HabitFragment extends Fragment {
                     .setNegativeButton("Cancelar", null)
                     .show();
         });
+        habitAdapter.setOnHabitDoneClickListener(habit -> {
+            habitViewModel.markHabitAsDone(habit);
+        });
+// accion del boton flotante
+        FloatingActionButton btnAdd = view.findViewById(R.id.btn_add_habit);
+        btnAdd.setOnClickListener(v ->{
+            FormHabitBottomSheet bottomSheet=new FormHabitBottomSheet();
+            bottomSheet.setOnHabitoGuardadoListener(nuevoHabito -> {
+                habitViewModel.insertHabit(nuevoHabito);
+            });
+            bottomSheet.show(getParentFragmentManager(),"FormHabitBottomSheet");
+        });
 
 
 
 
         return view;
     }
+/*
+    private void showAddHabitDialog() {
+        View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_habit, null);
+        EditText etName = dialogView.findViewById(R.id.et_habit_name);
+        EditText etDes = dialogView.findViewById(R.id.et_habit_description);
+        EditText etFreq = dialogView.findViewById(R.id.et_habit_frequency);
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Nuevo Hábito")
+                .setView(dialogView)
+                .setPositiveButton("Guardar", (dialog, which) -> {
+                    String name = etName.getText().toString().trim();
+                    String des = etDes.getText().toString().trim();
+                    String freq = etFreq.getText().toString().trim();
+
+                    if (!name.isEmpty() && !freq.isEmpty()) {
+                        Habit habit = new Habit(name,des, freq);
+                        new Thread(() -> habitViewModel.insertHabit(habit)).start();
+                    } else {
+                        Toast.makeText(getContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+*/
+
 }

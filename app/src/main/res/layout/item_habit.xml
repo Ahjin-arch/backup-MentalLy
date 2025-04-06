@@ -1,27 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="4dp"
+    android:layout_margin="8dp"
     android:padding="12dp"
-    android:background="@drawable/ic_launcher_background"
-    android:layout_marginBottom="8dp">
 
-    <TextView
-        android:id="@+id/tv_habit_name"
-        android:layout_width="wrap_content"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre del Hábito"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:background="@drawable/ic_launcher_background"
+        >
 
-    <TextView
-        android:id="@+id/tv_habit_frequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Frecuencia: Diario"
-        android:textSize="14sp"
-        android:textColor="#777" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            >
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tv_habit_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nombre del Hábito"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_habit_complete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hecho" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_habit_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción opcional del hábito"
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tv_habit_frequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frecuencia: Diario"
+            android:textSize="14sp"
+            android:textColor="#777" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/progress_habit"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:progress="50"
+            android:max="100"
+            android:progressTint="@color/black"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
 

@@ -20,4 +20,7 @@ public interface HabitDao {
     @Delete
     void deleteHabit(Habit habit);
 
+    @Query("UPDATE habits SET progress = :newProgress WHERE id = :habitId")
+    void updateProgress(int habitId, int newProgress);
+
 }

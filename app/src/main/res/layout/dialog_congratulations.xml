@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@drawable/bg_dialog_rounded">
+
+    <ImageView
+        android:id="@+id/imgCongratulations"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/bg_happy" />
+
+    <TextView
+        android:id="@+id/tvCongratsMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡Felicidades!\nCompletaste el hábito 🎉"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:paddingTop="16dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+</LinearLayout>

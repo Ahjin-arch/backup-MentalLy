@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item_card"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tv_emotion"
+        android:text="😊"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    >
+
+    <TextView
+        android:id="@+id/tv_note"
+        android:text="Nota"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textColor="#444" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:text="Fecha"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textColor="#888" />
+
+</LinearLayout>
+
+</LinearLayout>

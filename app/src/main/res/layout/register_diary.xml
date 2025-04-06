@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.habit.HabitFragment"
+    >
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="¿Cómo te sientes hoy?"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:layout_gravity="center"
+    android:paddingBottom="16dp" />
+
+
+<RadioGroup
+    android:id="@+id/rg_emotions"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center">
+
+    <RadioButton
+        android:id="@+id/rb_emotion_happy"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Feliz"
+        android:drawableTop="@drawable/bg_happy"
+        android:button="@null"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="@drawable/bg_emotion_selector"
+        />
+
+    <RadioButton
+        android:id="@+id/rb_Emotion_sad"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Triste"
+        android:drawableTop="@drawable/bg_sad"
+        android:button="@null"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="@drawable/bg_emotion_selector"
+        />
+
+    <RadioButton
+        android:id="@+id/rb_emotion_angry"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Enojado"
+        android:button="@null"
+        android:gravity="center"
+        android:padding="8dp"
+        android:drawableTop="@drawable/bg_angry"
+        android:background="@drawable/bg_emotion_selector"
+        />
+
+</RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Intensidad"
+            android:textSize="16sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_intensity_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+    <SeekBar
+        android:id="@+id/seekBar_intensity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="10" />
+
+    <EditText
+    android:id="@+id/et_comment_emotion"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="¿Por qué te sientes así?"
+    android:inputType="textMultiLine"
+    android:gravity="top"
+    android:padding="16dp"
+    android:layout_marginTop="16dp" />
+
+<Button
+    android:id="@+id/btn_save_emotion"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Guardar"
+    android:layout_marginTop="16dp" />
+
+</LinearLayout>

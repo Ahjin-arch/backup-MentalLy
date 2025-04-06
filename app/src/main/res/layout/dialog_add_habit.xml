@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:fitsSystemWindows="true"
+    >
+
+    <EditText
+        android:id="@+id/et_habit_name"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/nombreHabit"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/et_habit_description"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/descripcion"
+        android:inputType="text" />
+
+    <RadioGroup
+        android:id="@+id/rgHabitFrequency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rbFrequencyDaily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/diario" />
+
+        <RadioButton
+            android:id="@+id/rbFrequencyWeekly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/semanal" />
+
+        <RadioButton
+            android:id="@+id/rbFrequencyMonthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mensual" />
+
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/btn_habit_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/guardarhabito" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titleadd"
+        android:textSize="30sp"
+        android:gravity="center"
+        />
+    <ImageView
+        android:id="@+id/img_habit_add"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@drawable/baseline_compost_24" />
+
+
+</LinearLayout>
+

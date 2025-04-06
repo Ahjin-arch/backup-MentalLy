@@ -3,20 +3,32 @@ package com.example.myaply.data;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "emotions")
+@Entity(tableName = "emotion_entries")
 public class EmotionEntry {
+
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
 
-    public String emotion;
-    public String date;
+    private String emotion;
+    private String note;
+    private long timestamp;
 
-
-    public EmotionEntry(String emotion, String date) {
+    public EmotionEntry(String emotion, String note, long timestamp) {
         this.emotion = emotion;
-        this.date = date;
+        this.note = note;
+        this.timestamp = timestamp;
     }
 
+    // Getters y setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
+    public String getEmotion() { return emotion; }
+    public void setEmotion(String emotion) { this.emotion = emotion; }
+
+    public String getNote() { return note; }
+    public void setNote(String note) { this.note = note; }
+
+    public long getTimestamp() { return timestamp; }
+    public void setTimestamp(long timestamp) { this.timestamp = timestamp; }
 }
-

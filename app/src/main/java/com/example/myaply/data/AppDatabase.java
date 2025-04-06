@@ -6,13 +6,13 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Habit.class, EmotionEntry.class}, version = 3)
+@Database(entities = {Habit.class, EmotionEntry.class}, version = 4)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase instance;
 
     public abstract HabitDao habitDao();
-    public abstract EmotionDao emotionDao();
+    public abstract EmotionEntryDao emotionEntryDao();
 
 
     public static synchronized AppDatabase getInstance(Context context) {

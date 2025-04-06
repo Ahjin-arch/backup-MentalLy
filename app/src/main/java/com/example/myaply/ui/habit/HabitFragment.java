@@ -74,7 +74,7 @@ public class HabitFragment extends Fragment {
 
         return view;
     }
-/*
+/* con dialog la ventana para añadir un hábito
     private void showAddHabitDialog() {
         View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_habit, null);
         EditText etName = dialogView.findViewById(R.id.et_habit_name);

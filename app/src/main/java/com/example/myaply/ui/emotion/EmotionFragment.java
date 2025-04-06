@@ -20,10 +20,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myaply.R;
 import com.example.myaply.data.EmotionEntry;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Date;
 import java.util.Locale;
@@ -31,9 +37,7 @@ import java.util.Locale;
 public class EmotionFragment extends Fragment {
 
     private EmotionViewModel emotionViewModel;
-    private TextView tvStatus;
-    private RecyclerView recyclerView;
-    private EmotionAdapter adapter;
+    private EmotionAdapter emotionAdapter;
 
     @Nullable
     @Override
@@ -43,42 +47,39 @@ public class EmotionFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_emotion, container, false);
 
         emotionViewModel = new ViewModelProvider(this).get(EmotionViewModel.class);
-        tvStatus = view.findViewById(R.id.tv_status);
-
-        setupEmotionButton(view.findViewById(R.id.btn_happy), "😊");
-        setupEmotionButton(view.findViewById(R.id.btn_sad), "😔");
-        setupEmotionButton(view.findViewById(R.id.btn_angry), "😡");
-        setupEmotionButton(view.findViewById(R.id.btn_relaxed), "😌");
-
-
-        recyclerView = view.findViewById(R.id.recycler_emotions);
-        adapter = new EmotionAdapter();
+        //conexion del recycle y el adapter
+        RecyclerView recyclerView=view.findViewById(R.id.recycler_emotions);
+        emotionAdapter =new EmotionAdapter();
+        recyclerView.setAdapter(emotionAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
 
-        emotionViewModel.getAllEmotions().observe(getViewLifecycleOwner(), emotions -> {
-            adapter.setEmotionList(emotions);
+        FloatingActionButton fabAdd = view.findViewById(R.id.fab_add_emotion);
+        fabAdd.setOnClickListener(v -> abrirBottomSheet());
+
+        emotionViewModel = new ViewModelProvider(this).get(EmotionViewModel.class);
+        emotionViewModel.getAllEntries().observe(getViewLifecycleOwner(), entries -> {
+            emotionAdapter.setEmotionList(entries);
         });
 
+        scheduleDailyReminder();
         return view;
     }
 
-    private void setupEmotionButton(Button button, String emoji) {
-        button.setOnClickListener(v -> {
-            String today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-            EmotionEntry entry = new EmotionEntry(emoji, today);
+    private void abrirBottomSheet() {
+        FormEmotionBottomSheet bottomSheet = new FormEmotionBottomSheet();
+        bottomSheet.setOnEmotionSaveListener(entry -> {
             emotionViewModel.insertEmotion(entry);
-            tvStatus.setText("Estado registrado: " + emoji);
-            scheduleDailyReminder();
         });
+        bottomSheet.show(getParentFragmentManager(), bottomSheet.getTag());
     }
+
 
 
 
     private void scheduleDailyReminder() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 21);
-        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
         calendar.set(Calendar.SECOND, 0);
 
         Intent intent = new Intent(getContext(), EmotionReminderReceiver.class);

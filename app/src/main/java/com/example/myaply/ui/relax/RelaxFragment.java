@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,11 @@ public class RelaxFragment extends Fragment {
         view.findViewById(R.id.btn_sounds).setOnClickListener(v -> {
             SoundBottomSheet soundBottomSheet = new SoundBottomSheet();
             soundBottomSheet.show(getParentFragmentManager(), "SoundBottomSheet");
+        });
+        //Solo acepta llamadas directas, caso contrario stop
+       view.findViewById(R.id.btn_break).setOnClickListener(v -> {
+            BreathingBottomSheet sheet = new BreathingBottomSheet();
+            sheet.show(getParentFragmentManager(), "breathing_sheet");
         });
 
         return view;

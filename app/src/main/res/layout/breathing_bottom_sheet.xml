@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tv_breath_instruction"
+        android:text="Prepárate..."
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <View
+        android:id="@+id/breath_circle"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_shape"
+        android:layout_margin="30dp"
+        />
+
+    <Button
+        android:id="@+id/btn_start_breathing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comenzar"
+        android:layout_marginTop="32dp" />
+    <RadioGroup
+        android:id="@+id/rg_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <RadioButton android:id="@+id/rb_1_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 min" />
+        <RadioButton
+            android:id="@+id/rb_3_min"
+            android:text="3 min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/rb_5_min"
+            android:text="5 min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+
+</LinearLayout>

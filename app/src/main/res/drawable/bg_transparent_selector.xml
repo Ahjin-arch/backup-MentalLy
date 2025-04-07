@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                </shape>
+            </item>
+            <item android:top="3dp"> <!-- Ajusta el valor según sea necesario -->
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/purple_500" /> <!-- Amarillo para la parte inferior -->
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <item android:state_checked="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFF6FF" /> <!-- Blanco para estado no seleccionado -->
+            <stroke android:width="2dp" android:color="#BDBDBD" /> <!-- Borde gris suave -->
+        </shape>
+    </item>
+</selector>

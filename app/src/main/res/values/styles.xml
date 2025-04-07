@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FullScreenBottomSheet" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="behavior_peekHeight">0dp</item> <!-- La altura mínima será de 0 -->
+        <item name="android:windowIsFloating">false</item> <!-- Elimina el aspecto flotante -->
+        <item name="android:layout_height">match_parent</item> <!-- Ocupa toda la pantalla -->
+    </style>
+</resources>

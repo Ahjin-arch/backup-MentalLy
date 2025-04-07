@@ -56,5 +56,6 @@ public class EmotionAdapter extends RecyclerView.Adapter<EmotionAdapter.EmotionV
 
         }
     }
+
 }
 

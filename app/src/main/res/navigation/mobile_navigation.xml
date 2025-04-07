@@ -9,22 +9,34 @@
         android:id="@+id/navigation_home"
         android:name="com.example.myaply.ui.home.HomeFragment"
         android:label="@string/home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_habit"
+            app:destination="@id/navigation_habit" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_habit"
         android:name="com.example.myaply.ui.habit.HabitFragment"
         android:label="@string/habits"
-        tools:layout="@layout/fragment_habit" />
+        tools:layout="@layout/fragment_habit" >
+        <action
+            android:id="@+id/action_navigation_habit_to_navigation_emotion"
+            app:destination="@id/navigation_emotion" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_relax"
-        android:name="com.example.myaply.ui.emotioncalendar.EmotionCalendarFragment"
+        android:name="com.example.myaply.ui.relax.RelaxFragment"
         android:label="@string/relax"
-        tools:layout="@layout/fragment_emotion_calendar" />
+        tools:layout="@layout/fragment_relax"/>
     <fragment
         android:id="@+id/navigation_emotion"
         android:name="com.example.myaply.ui.emotion.EmotionFragment"
         android:label="@string/emotion"
-        tools:layout="@layout/fragment_emotion" />
+        tools:layout="@layout/fragment_emotion" >
+        <action
+            android:id="@+id/action_navigation_emotion_to_navigation_relax"
+            app:destination="@id/navigation_relax" />
+    </fragment>
 </navigation>

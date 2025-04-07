@@ -3,6 +3,7 @@ package com.example.myaply.ui.emotion;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlarmManager;
+import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -52,7 +53,7 @@ public class EmotionFragment extends Fragment {
         emotionAdapter =new EmotionAdapter();
         recyclerView.setAdapter(emotionAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+//boton flotante
         FloatingActionButton fabAdd = view.findViewById(R.id.fab_add_emotion);
         fabAdd.setOnClickListener(v -> abrirBottomSheet());
 
@@ -60,6 +61,10 @@ public class EmotionFragment extends Fragment {
         emotionViewModel.getAllEntries().observe(getViewLifecycleOwner(), entries -> {
             emotionAdapter.setEmotionList(entries);
         });
+
+        Button btnFilterDate = view.findViewById(R.id.btn_filter_date);
+        btnFilterDate.setOnClickListener(v -> mostrarDatePicker());
+
 
         scheduleDailyReminder();
         return view;
@@ -73,6 +78,28 @@ public class EmotionFragment extends Fragment {
         bottomSheet.show(getParentFragmentManager(), bottomSheet.getTag());
     }
 
+    private void mostrarDatePicker() {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                requireContext(),
+                (view, year, month, dayOfMonth) -> {
+                    calendar.set(year, month, dayOfMonth, 0, 0, 0);
+                    long startOfDay = calendar.getTimeInMillis();
+
+                    calendar.set(year, month, dayOfMonth, 23, 59, 59);
+                    long endOfDay = calendar.getTimeInMillis();
+
+                    emotionViewModel.getEmotionsByDate(startOfDay, endOfDay)
+                            .observe(getViewLifecycleOwner(), filteredList -> {
+                                emotionAdapter.setEmotionList(filteredList);
+                            });
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+        );
+        datePickerDialog.show();
+    }
 
 
 

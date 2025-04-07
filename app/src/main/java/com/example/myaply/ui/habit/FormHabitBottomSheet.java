@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 
 import com.example.myaply.R;
 import com.example.myaply.data.Habit;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class FormHabitBottomSheet extends BottomSheetDialogFragment {
@@ -51,7 +52,15 @@ public class FormHabitBottomSheet extends BottomSheetDialogFragment {
 
         return vista;
     }
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        BottomSheetDialog dialog = (BottomSheetDialog) getDialog();
+        FrameLayout bottomSheet = dialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+        if (bottomSheet != null) {
+            bottomSheet.setBackgroundResource(R.drawable.bg_dialog_rounded);
+        }
+    }
 
     private void guardarHabito() {
         int selectedId = rgHabitFrequency.getCheckedRadioButtonId();

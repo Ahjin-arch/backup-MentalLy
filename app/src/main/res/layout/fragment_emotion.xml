@@ -6,12 +6,25 @@
     android:layout_marginBottom="?actionBarSize"
     >
 
+
+    <Button
+        android:id="@+id/btn_filter_date"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Filtrar por Fecha"
+        android:backgroundTint="@color/teal_700"
+         />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_emotions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        android:layout_marginTop="?actionBarSize"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_emotion"

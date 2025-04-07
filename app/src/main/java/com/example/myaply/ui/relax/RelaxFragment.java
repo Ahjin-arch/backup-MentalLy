@@ -7,31 +7,26 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.myaply.R;
 import com.example.myaply.databinding.FragmentRelaxBinding;
 
 public class RelaxFragment extends Fragment {
 
-    private FragmentRelaxBinding binding;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        RelaxViewModel notificationsViewModel =
-                new ViewModelProvider(this).get(RelaxViewModel.class);
-
-        binding = FragmentRelaxBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
-    }
-
+    @Nullable
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_relax, container, false);
+
+        // Botón para abrir el Bottom Sheet
+        view.findViewById(R.id.btn_sounds).setOnClickListener(v -> {
+            SoundBottomSheet soundBottomSheet = new SoundBottomSheet();
+            soundBottomSheet.show(getParentFragmentManager(), "SoundBottomSheet");
+        });
+
+        return view;
     }
 }

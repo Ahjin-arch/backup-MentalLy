@@ -52,21 +52,6 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
 
         if (habit.getProgress() >= 100) {
             holder.btnHecho.setEnabled(false); // desactivar botón si ya está completo
-
-        /*    // Mostrar alerta
-            if (!habit.isCongratulated()) {
-                View dialogView = LayoutInflater.from(holder.itemView.getContext())
-                        .inflate(R.layout.dialog_congratulations, null);
-
-                new AlertDialog.Builder(holder.itemView.getContext())
-                        .setView(dialogView)
-                        .setCancelable(true)
-                        .show();
-
-                // Marcar que ya se mostró
-                habit.setCongratulated(true);
-            }*/
-
         }else{
             holder.btnHecho.setEnabled(true);
         }

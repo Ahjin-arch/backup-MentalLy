@@ -14,6 +14,7 @@ public class RelaxViewModel extends ViewModel {
     }
 
     public LiveData<String> getText() {
+
         return mText;
     }
 }

@@ -22,4 +22,8 @@ public interface EmotionEntryDao {
 
     @Delete
     void deleteEmotion(EmotionEntry entry);
+
+    @Query("SELECT * FROM emotion_entries WHERE timestamp BETWEEN :start AND :end ORDER BY timestamp DESC")
+    LiveData<List<EmotionEntry>> getEntriesByDate(long start, long end);
+
 }

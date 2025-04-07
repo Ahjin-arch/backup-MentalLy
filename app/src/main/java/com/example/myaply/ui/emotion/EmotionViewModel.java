@@ -35,4 +35,8 @@ public class EmotionViewModel extends AndroidViewModel {
         new Thread(() -> emotionEntryDao.deleteEmotion(entry)).start();
     }
 
+    public LiveData<List<EmotionEntry>> getEmotionsByDate(long from, long to) {
+        return emotionEntryDao.getEntriesByDate(from, to);
+    }
+
 }

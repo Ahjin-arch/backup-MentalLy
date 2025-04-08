@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:padding="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,31 +10,31 @@
         android:text="😊"
         android:textSize="16sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center"
-    >
+        android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/tv_note"
-        android:text="Nota"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
+    <LinearLayout
+        android:layout_width="351dp"
         android:layout_height="wrap_content"
-        android:textColor="#444" />
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_date"
-        android:text="Fecha"
-        android:textSize="12sp"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:textColor="#888" />
+        <TextView
+            android:id="@+id/tv_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nota"
+            android:textColor="#444" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fecha"
+            android:textColor="#888"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 
 </LinearLayout>

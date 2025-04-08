@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tour_pane"
     >
 
     <LinearLayout
@@ -26,7 +25,7 @@
             android:textStyle="bold"
             android:gravity="center"
             android:paddingBottom="16dp"
-            android:textColor="@color/red" />
+            android:textColor="@color/green_pane" />
 
         <TextView
             android:layout_width="match_parent"

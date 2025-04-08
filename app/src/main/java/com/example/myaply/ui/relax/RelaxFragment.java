@@ -32,6 +32,11 @@ public class RelaxFragment extends Fragment {
             BreathingBottomSheet sheet = new BreathingBottomSheet();
             sheet.show(getParentFragmentManager(), "breathing_sheet");
         });
+        view.findViewById(R.id.btn_exercise).setOnClickListener(v -> {
+            MuscleRelaxBottomSheet sheet = new MuscleRelaxBottomSheet();
+            sheet.show(getParentFragmentManager(), "muscle_relax_sheet");
+        });
+
 
         return view;
     }

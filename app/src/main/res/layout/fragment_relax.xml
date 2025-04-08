@@ -4,7 +4,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/green_pane"
         android:padding="16dp"
         tools:context=".ui.relax.RelaxFragment"
         >
@@ -23,7 +22,7 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:paddingBottom="16dp"
-                android:textColor="@color/purple_500" />
+                android:textColor="@color/tour_pane" />
 
             <TextView
                 android:id="@+id/tv_relax_subtitle"
@@ -33,7 +32,7 @@
                 android:textSize="16sp"
                 android:gravity="center"
                 android:paddingBottom="24dp"
-                android:textColor="@color/red" />
+                android:textColor="@color/green_pane" />
 
             <GridLayout
                 android:layout_width="match_parent"

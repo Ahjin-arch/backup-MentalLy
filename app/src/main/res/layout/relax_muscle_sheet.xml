@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/tvRelaxInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Relajación muscular"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="24dp" />
+    <View
+        android:id="@+id/viewPulse"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle_bg"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp" />
+
+
+    <TextView
+        android:id="@+id/tvMuscleStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tensa los hombros"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:paddingBottom="16dp" />
+
+    <ProgressBar
+        android:id="@+id/pbMuscleProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="@color/purple_500" />
+
+    <Button
+        android:id="@+id/btnStartMuscle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/tour_pane" />
+
+</LinearLayout>

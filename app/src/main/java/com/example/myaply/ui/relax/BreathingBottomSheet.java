@@ -28,21 +28,33 @@ public class BreathingBottomSheet extends BottomSheetDialogFragment {
     private boolean isRunning = false;
     private Handler handler = new Handler();
     private MediaPlayer mediaPlayer;
-    private RadioGroup rgDuration;
-    private int sessionDurationMillis = 60000; // por defecto 1 min
-
 
 
     private final String[] pattern = {"Inhala", "Mantén", "Exhala", "Mantén"};
     private final int[] durations = {4000, 4000, 4000, 4000}; // 4s cada fase
     private int step = 0;
+    private long startTime;
+
+    private long totalDurationMillis=60000;
+    private RadioGroup rgDuration;
+
 
     private Runnable breathRunnable = new Runnable() {
-
         @Override
         public void run() {
-            //Color
-            int color = Color.BLUE; // por defecto
+            if (!isRunning) return;
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            if (elapsedTime >= totalDurationMillis) {
+                isRunning = false;
+                btnStart.setText("Comenzar");
+                tvInstruction.setText("Prepárate...");
+                circleView.setScaleX(1f);
+                circleView.setScaleY(1f);
+                handler.removeCallbacks(this);
+                mediaPlayer.pause();
+                return;
+            }
+            int color = Color.BLUE;
             switch (step) {
                 case 0: color = Color.parseColor("#81D4FA"); break; // Inhala
                 case 1: color = Color.parseColor("#4FC3F7"); break; // Mantén
@@ -50,13 +62,9 @@ public class BreathingBottomSheet extends BottomSheetDialogFragment {
                 case 3: color = Color.parseColor("#4FC3F7"); break; // Mantén
             }
             circleView.setBackgroundTintList(ColorStateList.valueOf(color));
-
-            if (!isRunning) return;
-
             tvInstruction.setText(pattern[step]);
 
             float scale = (step == 0) ? 1.5f : (step == 2) ? 1f : circleView.getScaleX();
-
             ObjectAnimator scaleX = ObjectAnimator.ofFloat(circleView, "scaleX", scale);
             ObjectAnimator scaleY = ObjectAnimator.ofFloat(circleView, "scaleY", scale);
             scaleX.setDuration(1000);
@@ -80,39 +88,16 @@ public class BreathingBottomSheet extends BottomSheetDialogFragment {
         btnStart = view.findViewById(R.id.btn_start_breathing);
         rgDuration = view.findViewById(R.id.rg_duration);
 
-        rgDuration.setOnCheckedChangeListener((group, checkedId) -> {
-             checkedId = rgDuration.getCheckedRadioButtonId();
-            if (checkedId == R.id.rb_1_min) {
-                sessionDurationMillis = 60000;
-            } else if (checkedId == R.id.rb_3_min) {
-                sessionDurationMillis = 180000;
-            } else if (checkedId == R.id.rb_5_min) {
-                sessionDurationMillis = 300000;
-            }
-
-        });
-
-
         btnStart.setOnClickListener(v -> {
             if (!isRunning) {
                 isRunning = true;
                 btnStart.setText("Detener");
                 step = 0;
+                startTime = System.currentTimeMillis();
                 breathRunnable.run();
                 mediaPlayer.start();
 
-                handler.postDelayed(() -> {
-                    isRunning = false;
-                    Toast.makeText(getContext(), "¡Sesión completada! Bien hecho 😊", Toast.LENGTH_LONG).show();
-                    btnStart.setText("Comenzar");
-                    tvInstruction.setText("¡Completado!");
-                    circleView.setScaleX(1f);
-                    circleView.setScaleY(1f);
-                    mediaPlayer.pause();
-                }, sessionDurationMillis);
-
-
-
+                totalDurationMillis = getSelectedDuration(rgDuration);
             } else {
                 isRunning = false;
                 btnStart.setText("Comenzar");
@@ -127,7 +112,23 @@ public class BreathingBottomSheet extends BottomSheetDialogFragment {
         mediaPlayer = MediaPlayer.create(getContext(), R.raw.breath_sound);
         mediaPlayer.setLooping(true);
 
+
         return view;
+    }
+    private long getSelectedDuration(RadioGroup rgDuration) {
+
+        rgDuration.setOnCheckedChangeListener((group, checkedId) -> {
+            checkedId = rgDuration.getCheckedRadioButtonId();
+            if (checkedId == R.id.rb_1_min) {
+                totalDurationMillis = 60000;
+            } else if (checkedId == R.id.rb_3_min) {
+                totalDurationMillis = 180000;
+            } else if (checkedId == R.id.rb_5_min) {
+                totalDurationMillis = 300000;
+            }
+
+        });
+        return totalDurationMillis;
     }
 
     @Override
@@ -139,5 +140,7 @@ public class BreathingBottomSheet extends BottomSheetDialogFragment {
             mediaPlayer.release();
             mediaPlayer = null;
         }
+
     }
 }
+

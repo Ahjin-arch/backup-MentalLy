@@ -2,11 +2,13 @@ package com.example.myaply.ui.relax;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +40,9 @@ public class SoundBottomSheet extends BottomSheetDialogFragment {
         view.findViewById(R.id.btn_forest_sound).setOnClickListener(v -> {
             playSound(R.raw.forest);
             changeBackground(R.drawable.forest_background);
+            Toast toast = Toast.makeText(getContext(), "Desliza hacia abajo", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
+            toast.show();
         });
         view.findViewById(R.id.btn_waves_sound).setOnClickListener(v -> {
             playSound(R.raw.waves);

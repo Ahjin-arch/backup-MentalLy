@@ -74,30 +74,5 @@ public class HabitFragment extends Fragment {
 
         return view;
     }
-/* con dialog la ventana para añadir un hábito
-    private void showAddHabitDialog() {
-        View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_habit, null);
-        EditText etName = dialogView.findViewById(R.id.et_habit_name);
-        EditText etDes = dialogView.findViewById(R.id.et_habit_description);
-        EditText etFreq = dialogView.findViewById(R.id.et_habit_frequency);
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Nuevo Hábito")
-                .setView(dialogView)
-                .setPositiveButton("Guardar", (dialog, which) -> {
-                    String name = etName.getText().toString().trim();
-                    String des = etDes.getText().toString().trim();
-                    String freq = etFreq.getText().toString().trim();
-
-                    if (!name.isEmpty() && !freq.isEmpty()) {
-                        Habit habit = new Habit(name,des, freq);
-                        new Thread(() -> habitViewModel.insertHabit(habit)).start();
-                    } else {
-                        Toast.makeText(getContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Cancelar", null)
-                .show();
-    }
-*/
 
 }

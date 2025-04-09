@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="@color/white"
+    >
 
     <TextView
         android:id="@+id/tv_breath_instruction"

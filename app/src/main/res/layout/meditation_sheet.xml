@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/container_meditation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center"
+        android:background="@drawable/bg_meditation_anim"
+        >
+    <TextView
+    android:id="@+id/tv_meditation_phrase"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Encuentra tu calma..."
+    android:textSize="20sp"
+    android:gravity="center"
+    android:paddingBottom="16dp" />
+
+
+
+        <RadioGroup
+            android:id="@+id/rg_duration_meditation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_1_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 min" />
+            <RadioButton
+                android:id="@+id/rb_3_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 min" />
+            <RadioButton
+                android:id="@+id/rb_5_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 min" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_start_meditation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Iniciar Meditación"
+            android:layout_marginTop="24dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

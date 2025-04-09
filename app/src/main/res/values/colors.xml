@@ -12,5 +12,8 @@
     <color name="red">#F44336</color>
     <color name="green_pane">#A3D8B9</color>
     <color name="tour_pane">#BBE5E7</color>
+    <color name="med_bg1">#E0F7FA</color>
+    <color name="med_bg2">#B2EBF2</color>
+    <color name="med_bg3">#B3E5FC</color>
 
 </resources>

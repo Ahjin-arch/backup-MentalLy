@@ -3,8 +3,12 @@ package com.example.myaply.ui.relax;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +27,8 @@ public class MuscleRelaxBottomSheet extends BottomSheetDialogFragment {
 
     private TextView tvMuscleStep;
     private ProgressBar pbProgress;
-    private View viewPulse;
-    private ObjectAnimator pulseAnimator;
+    private Vibrator vibrator;
+
 
     private Button btnStart;
     private Handler handler = new Handler();
@@ -52,16 +56,8 @@ public class MuscleRelaxBottomSheet extends BottomSheetDialogFragment {
         tvMuscleStep = view.findViewById(R.id.tvMuscleStep);
         pbProgress = view.findViewById(R.id.pbMuscleProgress);
         btnStart = view.findViewById(R.id.btnStartMuscle);
-        viewPulse = view.findViewById(R.id.viewPulse);
+        vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
 
-        pulseAnimator = ObjectAnimator.ofPropertyValuesHolder(
-                viewPulse,
-                PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 1.4f, 1f),
-                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 1.4f, 1f)
-        );
-        pulseAnimator.setDuration(1500);
-        pulseAnimator.setRepeatCount(ValueAnimator.INFINITE);
-        pulseAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
 
 
         btnStart.setOnClickListener(v -> {
@@ -82,12 +78,26 @@ public class MuscleRelaxBottomSheet extends BottomSheetDialogFragment {
     }
 
     private void startRelaxation() {
-        if (!pulseAnimator.isRunning()) {
-            pulseAnimator.start();
-        }
+
         if (stepIndex < steps.length && isRunning) {
             String currentStep = steps[stepIndex];
             tvMuscleStep.setText(currentStep);
+            if (vibrator != null && vibrator.hasVibrator()) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    vibrator.vibrate(200);
+                }
+            }
+            if (currentStep.toLowerCase().contains("tensa")) {
+                if (vibrator != null && vibrator.hasVibrator()) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(VibrationEffect.createOneShot(300, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        vibrator.vibrate(300);
+                    }
+                }
+            }
 
             int progress = (int) (((float) stepIndex / steps.length) * 100);
             pbProgress.setProgress(progress);
@@ -96,8 +106,16 @@ public class MuscleRelaxBottomSheet extends BottomSheetDialogFragment {
 
             handler.postDelayed(this::startRelaxation, 5000); // 5 segundos por paso
         } else if (isRunning) {
-            pulseAnimator.end();
             tvMuscleStep.setText("¡Bien hecho! Relajación completa 😊");
+            if (vibrator != null && vibrator.hasVibrator()) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    long[] pattern = {0, 200, 100, 200, 100, 300}; // ON-OFF alternado
+                    vibrator.vibrate(VibrationEffect.createWaveform(pattern, -1));
+                } else {
+                    vibrator.vibrate(new long[]{0, 200, 100, 200, 100, 300}, -1);
+                }
+
+            }
             pbProgress.setProgress(100);
             btnStart.setText("Reiniciar");
             isRunning = false;
@@ -107,7 +125,6 @@ public class MuscleRelaxBottomSheet extends BottomSheetDialogFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        pulseAnimator.end();
         handler.removeCallbacksAndMessages(null);
     }
 }

@@ -11,10 +11,8 @@
     <Button
         android:id="@+id/btn_filter_date"
         android:layout_width="match_parent"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="Filtrar por Fecha"
-        android:backgroundTint="@color/teal_700"
          />
 
 

@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="nameHabitCard">Nombre del Hábito</string>
+    <string name="hecho">hecho</string>
+    <string name="markComplete">Marcar hábito como completado</string>
+    <string name="descriptionHabit">Descripción opcional del hábito</string>
+    <string name="frecuency">Frecuencia: Diario</string>
+<string name="progress">Progreso del hábito: 10  100 completado</string>
+
+<string name="btnaddhabit">Agregar hábito</string>
+    <string name="tittleHabtis">Mis Hábitos</string>
+    <string name="tittleSelecFrecuency">Selecione la frecuencia</string>
+    <string name="reclycerText">Lista de hábitos</string>
+</resources>

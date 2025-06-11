@@ -101,7 +101,7 @@ public class FormEmotionBottomSheet extends BottomSheetDialogFragment {
         int intensidad = seekBarIntensity.getProgress();
         String comentario = etCommentEmotion.getText().toString();
         long timestamp = System.currentTimeMillis();
-        String notaFinal =intensidad + "/10. " + comentario;
+        String notaFinal ="Intensidad: "+intensidad + "/10. " + comentario;
 
 
         EmotionEntry entry = new EmotionEntry(emotionSelected, notaFinal, timestamp);

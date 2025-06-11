@@ -2,7 +2,7 @@
     <!-- Estado seleccionado -->
     <item android:state_checked="true">
         <shape android:shape="rectangle">
-            <solid android:color="#FFEB3B" /> <!-- Amarillo para estado seleccionado -->
+            <solid android:color="#AAEBAB" /> <!-- Amarillo para estado seleccionado -->
             <corners android:radius="16dp" /> <!-- Bordes redondeados -->
             <stroke android:width="2dp" android:color="#FBC02D" /> <!-- Borde más oscuro -->
         </shape>

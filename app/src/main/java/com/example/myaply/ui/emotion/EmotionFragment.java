@@ -7,7 +7,6 @@ import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 
@@ -21,19 +20,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.myaply.R;
-import com.example.myaply.data.EmotionEntry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Date;
-import java.util.Locale;
 
 public class EmotionFragment extends Fragment {
 

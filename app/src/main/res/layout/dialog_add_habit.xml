@@ -1,62 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     android:fitsSystemWindows="true"
     >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingBottom="16dp"
-        android:background="@drawable/baseline_horizontal_rule_24"
-        />
+
+        <TextView
+            android:layout_width="59dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/baseline_horizontal_rule_24"
+            android:paddingBottom="16dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titleadd"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            />
     <EditText
         android:id="@+id/et_habit_name"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="@string/nombreHabit"
-        android:inputType="text" />
+        android:inputType="text"
+        style="@style/EditTextStyle"
+        android:autofillHints=""
+        />
 
     <EditText
         android:id="@+id/et_habit_description"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="@string/descripcion"
-        android:inputType="text" />
+        android:inputType="text"
+        style="@style/EditTextStyle"
+        android:autofillHints=""
 
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingStart="16dp"
+            android:text="@string/tittleSelecFrecuency"
+            />
     <RadioGroup
         android:id="@+id/rgHabitFrequency"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:paddingBottom="8dp"
+        >
 
         <RadioButton
             android:id="@+id/rbFrequencyDaily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/diario" />
-
+            android:text="@string/diario"
+            android:gravity="center"
+            android:background="@drawable/custom_radio_button"
+            android:checked="true"
+            android:textStyle="bold"
+            android:padding="8dp"
+            />
         <RadioButton
             android:id="@+id/rbFrequencyWeekly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/semanal" />
+            android:gravity="center"
+            android:text="@string/semanal"
+            android:background="@drawable/custom_radio_button"
+            android:textStyle="bold"
+            android:padding="8dp"
 
+            />
         <RadioButton
             android:id="@+id/rbFrequencyMonthly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mensual" />
+            android:gravity="center"
+            android:text="@string/mensual"
+            android:background="@drawable/custom_radio_button"
+            android:textStyle="bold"
+            android:padding="8dp"
 
+            />
     </RadioGroup>
 
 
@@ -64,20 +107,16 @@
         android:id="@+id/btn_habit_save"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:text="@string/guardarhabito" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/titleadd"
-        android:textSize="30sp"
-        android:gravity="center"
+        android:text="@string/guardarhabito"
+        android:backgroundTint="@color/green_pane"
+        android:textColor="@color/black"
         />
 
-        <View
-            android:id="@+id/img_habit_add"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="204dp" />
-
+            android:layout_height="233dp"
+            android:background="@drawable/ic_rain"
+            android:gravity="center" />
     </LinearLayout>
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -1,41 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.habit.HabitFragment"
-    android:padding="16dp"
-    android:layout_marginBottom="?actionBarSize"
+    android:fitsSystemWindows="true"
     >
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mis Hábitos"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp" />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_habits"
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="20dp"
-            tools:listitem="@layout/item_habit"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_launcher_foreground"
+            app:title="@string/mishábitos"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_habits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:contentDescription="@string/reclycerText"
+        tools:listitem="@layout/item_habit"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_habit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:contentDescription="Agregar hábito" />
+        android:layout_marginBottom="?actionBarSize"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="@string/btnaddhabit"
+        android:importantForAccessibility="yes"
+        app:borderWidth="1dp"
+        app:elevation="1dp"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        app:rippleColor="@color/black"
+        app:srcCompat="@drawable/ic_add_list" />
 
 
 
 
-    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 

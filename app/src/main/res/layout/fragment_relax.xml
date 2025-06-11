@@ -6,6 +6,7 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         tools:context=".ui.relax.RelaxFragment"
+        android:fitsSystemWindows="true"
         >
 
         <LinearLayout
@@ -40,7 +41,6 @@
                 android:columnCount="2"
                 android:rowCount="3"
                 android:alignmentMode="alignMargins"
-                android:padding="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp">
 

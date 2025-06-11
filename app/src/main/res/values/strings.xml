@@ -13,7 +13,7 @@
     <string name="semanal">Semanal</string>
     <string name="mensual">Mensual</string>
     <string name="titleadd">Nuevo Hábito</string>
-
+    <string name="mishábitos">Mis Hábitos</string>
     <string-array name="breathing_rhythm_options">
         <item>4-4</item>
         <item>4-7-8</item>
@@ -25,5 +25,8 @@
         <item>10</item>
         <item>15</item>
     </string-array>
+
+
+
 
 </resources>

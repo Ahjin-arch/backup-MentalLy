@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 public class FormHabitBottomSheet extends BottomSheetDialogFragment {
 
     private EditText etNombreHabito, etDescripcionHabito;
-    private RadioGroup rgHabitFrequency;
+    private RadioGroup rgHabitFrequency,rgIconHabit;
     private Button btnGuardarHabito;
 
     private OnHabitoGuardadoListener listener;
@@ -39,19 +40,38 @@ public class FormHabitBottomSheet extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View vista = inflater.inflate(R.layout.dialog_add_habit, container, false);
+        View view = inflater.inflate(R.layout.dialog_add_habit, container, false);
 
-        etNombreHabito = vista.findViewById(R.id.et_habit_name);
-        etDescripcionHabito = vista.findViewById(R.id.et_habit_description);
-        rgHabitFrequency = vista.findViewById(R.id.rgHabitFrequency);
-        btnGuardarHabito = vista.findViewById(R.id.btn_habit_save);
+        etNombreHabito = view.findViewById(R.id.et_habit_name);
+        etDescripcionHabito = view.findViewById(R.id.et_habit_description);
+        rgHabitFrequency = view.findViewById(R.id.rgHabitFrequency);
+        btnGuardarHabito = view.findViewById(R.id.btn_habit_save);
+        rgIconHabit=view.findViewById(R.id.rg_icons);
 
+        rgIconHabit.setOnCheckedChangeListener((group, checkedId) -> {
+            // Restablecer texto de todos los RadioButtons
+            ((RadioButton) group.findViewById(R.id.rb_iconMeditation)).setText("");
+            ((RadioButton) group.findViewById(R.id.rb_iconExercise)).setText("");
+            ((RadioButton) group.findViewById(R.id.rb_iconReading)).setText("");
+            ((RadioButton) group.findViewById(R.id.rb_iconSleep)).setText("");
 
-
+            // Establecer texto solo para el seleccionado
+            if (checkedId == R.id.rb_iconMeditation) {
+                ((RadioButton) group.findViewById(R.id.rb_iconMeditation)).setText("Meditación");
+            } else if (checkedId == R.id.rb_iconExercise) {
+                ((RadioButton) group.findViewById(R.id.rb_iconExercise)).setText("Ejercicio");
+            } else if (checkedId == R.id.rb_iconReading) {
+                ((RadioButton) group.findViewById(R.id.rb_iconReading)).setText("Lectura");
+            } else if (checkedId == R.id.rb_iconSleep) {
+                ((RadioButton) group.findViewById(R.id.rb_iconSleep)).setText("Sueño");
+            }
+        });
         btnGuardarHabito.setOnClickListener(v -> guardarHabito());
 
-        return vista;
+        return view;
     }
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -62,7 +82,24 @@ public class FormHabitBottomSheet extends BottomSheetDialogFragment {
         }
     }
 
+
+    private int getIconResourceFromRadioButton(int radioButtonId) {
+        if (radioButtonId == R.id.rb_iconMeditation) {
+            return R.drawable.ic_meditation;
+        } else if (radioButtonId == R.id.rb_iconExercise) {
+            return R.drawable.ic_exercise;
+        } else if (radioButtonId == R.id.rb_iconReading) {
+            return R.drawable.ic_reading;
+        }else if (radioButtonId == R.id.rb_iconSleep) {
+            return R.drawable.ic_sleep;
+        }
+        else {
+            return R.drawable.ic_habit_default;
+        }
+    }
     private void guardarHabito() {
+        int selectedRadioButtonId=rgIconHabit.getCheckedRadioButtonId();
+        int iconResource=getIconResourceFromRadioButton(selectedRadioButtonId);
         int selectedId = rgHabitFrequency.getCheckedRadioButtonId();
         String frecuenciaSeleccionada = "";
 
@@ -79,7 +116,7 @@ public class FormHabitBottomSheet extends BottomSheetDialogFragment {
         String descripcion = etDescripcionHabito.getText().toString();
 
         if (!nombre.isEmpty() && !frecuenciaSeleccionada.isEmpty()) {
-            Habit nuevoHabito = new Habit( nombre, descripcion, frecuenciaSeleccionada);
+            Habit nuevoHabito = new Habit( nombre, descripcion, frecuenciaSeleccionada,iconResource);
             if (listener != null) {
                 listener.onHabitoGuardado(nuevoHabito); // Enviar el hábito al Fragment principal
             }

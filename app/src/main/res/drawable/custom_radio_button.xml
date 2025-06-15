@@ -2,8 +2,9 @@
     <!-- Estado seleccionado -->
     <item android:state_checked="true">
         <shape android:shape="rectangle">
-            <solid android:color="#2196F3" /> <!-- Amarillo para estado seleccionado -->
-            <corners android:radius="16dp" /> <!-- Bordes redondeados -->
+            <solid android:color="?android:attr/windowBackground" /> <!-- Amarillo para estado seleccionado -->
+            <corners android:radius="16dp" />
+            <stroke android:width="2dp" android:color="@android:color/darker_gray" /><!-- Bordes redondeados -->
         </shape>
     </item>
 

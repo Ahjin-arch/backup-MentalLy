@@ -6,14 +6,8 @@
     <string name="emotion">Emociones</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="nombreHabit">Nombre del hábito</string>
-    <string name="descripcion">Descripcion</string>
-    <string name="guardarhabito">Guardar Hábito</string>
-    <string name="diario">Diario</string>
-    <string name="semanal">Semanal</string>
-    <string name="mensual">Mensual</string>
-    <string name="titleadd">Nuevo Hábito</string>
-    <string name="mishábitos">Mis Hábitos</string>
+    <string name="meditacion">Meditación</string>
+
 
 
 

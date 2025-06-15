@@ -15,14 +15,15 @@ public class Habit {
 
     private int progress;
     private boolean congratulated; // Nuevo campo
-
+    private int icon;
 
     // Constructor
-    public Habit(String name,String description, String frequency) {
+    public Habit(String name,String description, String frequency,int icon) {
         this.name = name;
         this.frequency = frequency;
         this.description = description;
         this.progress = 0; // empieza en 0
+        this.icon=icon;
     }
 
     // Getters y setters
@@ -41,6 +42,8 @@ public class Habit {
 
     public int getProgress() { return progress; }
     public void setProgress(int progress) { this.progress = progress; }
+    public int getIcon() { return icon; }
+    public void setIcon(int icon) { this.icon = icon; }
 
     public boolean isCongratulated() {
         return congratulated;

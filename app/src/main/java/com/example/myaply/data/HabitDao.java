@@ -13,12 +13,13 @@ public interface HabitDao {
 
     @Insert
     void insertHabit(Habit habit);
+    @Delete
+    void deleteHabit(Habit habit);
 
     @Query("SELECT * FROM habits ORDER BY id DESC")
     LiveData<List<Habit>> getAllHabits();
 
-    @Delete
-    void deleteHabit(Habit habit);
+
 
     @Query("UPDATE habits SET progress = :newProgress WHERE id = :habitId")
     void updateProgress(int habitId, int newProgress);

@@ -24,7 +24,14 @@ import com.example.myaply.R;
 import com.example.myaply.data.Habit;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HabitFragment extends Fragment {
+
+    private RecyclerView recyclerRecommendedHabits;
+    private RecommendedHabitAdapter recommendedHabitAdapter;
+    private List<Habit> recommendedHabits;
     private HabitViewModel habitViewModel;
     @Nullable
     @Override
@@ -39,7 +46,6 @@ public class HabitFragment extends Fragment {
         recyclerView.setAdapter(habitAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        //inicializamos el spinner
 
 
 // Observar cambios de hábitos y actualizar la lista
@@ -59,6 +65,13 @@ public class HabitFragment extends Fragment {
         habitAdapter.setOnHabitDoneClickListener(habit -> {
             habitViewModel.markHabitAsDone(habit);
         });
+
+        //segundo adapter para hábitos recomendados estatico
+        recyclerRecommendedHabits = view.findViewById(R.id.recycler_recommended_habits);
+        recyclerRecommendedHabits.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        List<Habit> recommendedHabits = getRecommendedHabits();
+        recommendedHabitAdapter = new RecommendedHabitAdapter(recommendedHabits, habitViewModel);
+        recyclerRecommendedHabits.setAdapter(recommendedHabitAdapter);
 // accion del boton flotante
         FloatingActionButton btnAdd = view.findViewById(R.id.btn_add_habit);
         btnAdd.setOnClickListener(v ->{
@@ -71,8 +84,16 @@ public class HabitFragment extends Fragment {
 
 
 
-
         return view;
+    }
+
+    private List<Habit> getRecommendedHabits() {
+        // Lista estatica de hábitos recomendados
+        List<Habit> habits = new ArrayList<>();
+        habits.add(new Habit("Meditación", "Meditar 10 minutos al día", "Diaria", R.drawable.ic_meditation));
+        habits.add(new Habit("Ejercicio", "Hacer 30 minutos de ejercicio", "Diaria", R.drawable.ic_exercise));
+        habits.add(new Habit("Lectura", "Leer 20 páginas al día", "Diaria", R.drawable.ic_reading));
+        return habits;
     }
 
 }

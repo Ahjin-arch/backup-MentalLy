@@ -1,16 +1,16 @@
 package com.example.myaply.ui.habit;
 
-import android.os.Bundle;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myaply.R;
@@ -47,8 +47,29 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
         Habit habit = habitList.get(position);
         holder.tvName.setText(habit.getName());
         holder.tvDes.setText(habit.getDescription());
-        holder.tvFrequency.setText("Frecuencia: " + habit.getFrequency());
+        holder.tvFrequency.setText(habit.getFrequency());
         holder.progressBar.setProgress(habit.getProgress());
+        if (habit.getIcon() != 0) {
+            holder.ivIcon.setImageResource(habit.getIcon());
+        } else {
+            holder.ivIcon.setImageResource(R.drawable.ic_habit_default);
+        }
+        int colorRes;
+
+        if (habit.getIcon()==R.drawable.ic_meditation){
+            colorRes=R.color.icon_meditation_color;
+        } else if (habit.getIcon()==R.drawable.ic_exercise) {
+            colorRes = R.color.icon_exercise_color;
+        }else if (habit.getIcon()==R.drawable.ic_reading) {
+            colorRes = R.color.icon_reading_color;
+        }else if (habit.getIcon()==R.drawable.ic_sleep) {
+            colorRes = R.color.icon_sleep_color;
+        }else {
+            colorRes = R.color.icon_default_color;
+        }
+
+        holder.ivIcon.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.getContext(), colorRes)));
+
 
         if (habit.getProgress() >= 100) {
             holder.btnHecho.setEnabled(false); // desactivar botón si ya está completo
@@ -87,6 +108,7 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
         TextView tvName, tvFrequency,tvDes;
         ProgressBar progressBar;
         Button btnHecho;
+        ImageView ivIcon;
 
         public HabitViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -95,7 +117,7 @@ public class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHol
             tvFrequency = itemView.findViewById(R.id.tv_habit_frequency);
             progressBar = itemView.findViewById(R.id.progress_habit);
             btnHecho = itemView.findViewById(R.id.btn_habit_complete);
-
+            ivIcon=itemView.findViewById(R.id.iv_habit_icon);
         }
     }
 

@@ -1,14 +1,37 @@
 <resources>
-
+    <string name="nombreHabit">Nombre del hábito</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="guardarhabito">Guardar Hábito</string>
+    <string name="diario">Diario</string>
+    <string name="semanal">Semanal</string>
+    <string name="mensual">Mensual</string>
+    <string name="titleadd">Nuevo Hábito</string>
+    <string name="mishábitos">Mis Hábitos</string>
     <string name="nameHabitCard">Nombre del Hábito</string>
+
+
     <string name="hecho">hecho</string>
     <string name="markComplete">Marcar hábito como completado</string>
     <string name="descriptionHabit">Descripción opcional del hábito</string>
-    <string name="frecuency">Frecuencia: Diario</string>
-<string name="progress">Progreso del hábito: 10  100 completado</string>
+    <string name="frecuency">Frecuencia: </string>
 
-<string name="btnaddhabit">Agregar hábito</string>
+    <string name="progress">Progreso del hábito: 10  100 completado</string>
+
+    <string name="btnaddhabit">Agregar hábito</string>
     <string name="tittleHabtis">Mis Hábitos</string>
     <string name="tittleSelecFrecuency">Selecione la frecuencia</string>
     <string name="reclycerText">Lista de hábitos</string>
+
+    <string name="habit_card_description">Tarjeta de hábito</string>
+    <string name="habit_icon">Ícono del hábito</string>
+
+    <string name="texticon_meditation">Ícono de meditación</string>
+    <string name="texticon_exercise">Ícono de ejercicio</string>
+    <string name="texticon_reading">Ícono de lectura</string>
+    <string name="texticon_sleep">Ícono de dormir</string>
+
+
+    <string name="recommended_habits">Hábitos recomendados</string>
+    <string name="none"> </string>
+
 </resources>

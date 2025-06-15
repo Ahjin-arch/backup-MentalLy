@@ -10,30 +10,60 @@
     android:fitsSystemWindows="true"
     >
 
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_launcher_foreground"
-            app:title="@string/mishábitos"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
-            />
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/semi_grey"
+            android:layout_margin="8dp">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@drawable/ic_habit_default"
+                app:title="@string/mishábitos"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                />
+            <TextView
+                android:id="@+id/tv_recommended_habits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/recommended_habits"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:contentDescription="@string/recommended_habits" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_recommended_habits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:paddingHorizontal="16dp"
+                android:layout_margin="8dp"
+                android:clipToPadding="false"
+                tools:listitem="@layout/item_recommended_habit" />
+        </com.google.android.material.appbar.AppBarLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_habits"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="0dp"
         android:layout_marginBottom="?attr/actionBarSize"
-        android:layout_marginTop="?attr/actionBarSize"
         android:contentDescription="@string/reclycerText"
         tools:listitem="@layout/item_habit"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
-
+    </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_habit"
         android:layout_width="wrap_content"

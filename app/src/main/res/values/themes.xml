@@ -18,12 +18,16 @@
          barra inferior
          color sombra
         -->
-        <item name="colorOnSurface">@color/colorPrimary</item>
+        <item name="colorOnSurface">#5DD381</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="elevationOverlayEnabled">true</item>
         <item name="colorSurface">@color/semi_white</item>
+
+
+
+
     </style>
 </resources>

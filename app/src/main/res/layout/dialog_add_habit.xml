@@ -27,6 +27,82 @@
             android:gravity="center"
             android:paddingBottom="16dp"
             />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/habit_icon"
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:gravity="start"/>
+
+
+        <RadioGroup
+            android:id="@+id/rg_icons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:paddingBottom="8dp"
+            >
+
+            <RadioButton
+                android:id="@+id/rb_iconMeditation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:button="@drawable/ic_meditation"
+                android:background="@drawable/custom_radio_button"
+                android:checked="true"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:text="@string/meditacion"
+                android:contentDescription="@string/texticon_meditation"
+
+                />
+
+
+
+            <RadioButton
+                android:id="@+id/rb_iconExercise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:button="@drawable/ic_exercise"
+                android:padding="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/custom_radio_button"
+                android:text="@string/none"
+                android:contentDescription="@string/texticon_exercise"
+                />
+            <RadioButton
+                android:id="@+id/rb_iconReading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:button="@drawable/ic_reading"
+                android:padding="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/custom_radio_button"
+                android:text="@string/none"
+                android:contentDescription="@string/texticon_reading"
+
+                />
+            <RadioButton
+                android:id="@+id/rb_iconSleep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:button="@drawable/ic_sleep"
+                android:padding="16dp"
+                android:background="@drawable/custom_radio_button"
+                android:text="@string/none"
+                android:contentDescription="@string/texticon_sleep"
+
+                />
+        </RadioGroup>
+
+
     <EditText
         android:id="@+id/et_habit_name"
         android:layout_width="match_parent"
@@ -35,6 +111,7 @@
         android:inputType="text"
         style="@style/EditTextStyle"
         android:autofillHints=""
+
         />
 
     <EditText
@@ -108,15 +185,9 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="@string/guardarhabito"
-        android:backgroundTint="@color/green_pane"
-        android:textColor="@color/black"
         />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="233dp"
-            android:background="@drawable/ic_rain"
-            android:gravity="center" />
+
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

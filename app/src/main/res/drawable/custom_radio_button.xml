@@ -4,7 +4,7 @@
         <shape android:shape="rectangle">
             <solid android:color="?android:attr/windowBackground" /> <!-- Amarillo para estado seleccionado -->
             <corners android:radius="16dp" />
-            <stroke android:width="2dp" android:color="@android:color/darker_gray" /><!-- Bordes redondeados -->
+            <stroke android:width="2dp" android:color="?attr/colorPrimary" /><!-- Bordes redondeados -->
         </shape>
     </item>
 

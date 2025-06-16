@@ -16,6 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAply"
         tools:targetApi="31">
+
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true"

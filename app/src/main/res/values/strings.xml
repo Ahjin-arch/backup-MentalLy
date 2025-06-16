@@ -8,11 +8,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="meditacion">Meditación</string>
 
+    <string name="background1">fondo</string>
+    <string name="efectbackground">efecto de desvanecimiento</string>
+    <string name="iconText">icono de la aplicacion</string>
 
-
-
-
-
-
-
+    <string name="login">Iniciar Sesion</string>
+    <string name="register">Registrarse</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="loginText">boton de inicio de sesion</string>
+    <string name="registerText">boton de registro de usuario</string>
+    <string name="userText">campo de usuario</string>
+    <string name="passwordText">campo de contraseña</string>
+    <string name="returne">atras</string>
 </resources>

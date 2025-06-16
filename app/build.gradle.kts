@@ -52,7 +52,7 @@ dependencies {
     implementation(libs.legacy.support.v4)
     implementation ("androidx.navigation:navigation-fragment:2.8.9")
     implementation ("androidx.navigation:navigation-ui:2.8.9")
-
+    implementation ("androidx.security:security-crypto:1.0.0")
     implementation("androidx.room:room-runtime:2.6.1")
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
     testImplementation(libs.junit)

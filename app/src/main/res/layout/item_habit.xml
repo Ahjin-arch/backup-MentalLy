@@ -93,13 +93,20 @@
             android:layout_marginTop="12dp"
             android:progressBackgroundTint="@color/habit_progress_background"
             android:contentDescription="@string/progress"/>
-        <Button
-            android:id="@+id/btn_habit_complete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hecho"
-            android:contentDescription="@string/markComplete"
-            />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_habit_complete"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="@string/hecho"
+        app:cornerRadius="8dp"
+        android:layout_margin="10dp"
+        app:rippleColor="?attr/colorOnSecondary"
+        android:layout_gravity="center"
+        android:contentDescription="@string/markComplete"
+        />
+
+
     </LinearLayout>
 
 

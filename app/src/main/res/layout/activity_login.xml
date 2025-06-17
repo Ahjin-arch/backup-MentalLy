@@ -73,7 +73,6 @@ android:transitionName="shared_element_container">
             android:text="@string/login"
             android:layout_margin="10dp"
             app:cornerRadius="8dp"
-            app:backgroundTint="@color/colorPrimary"
             app:rippleColor="?attr/colorOnSecondary"
             />
 
@@ -83,7 +82,6 @@ android:transitionName="shared_element_container">
             android:layout_height="wrap_content"
             android:text="@string/register"
             app:cornerRadius="8dp"
-            app:backgroundTint="@color/colorPrimary"
             android:layout_margin="10dp"
             app:rippleColor="?attr/colorOnSecondary"
             />

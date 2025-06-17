@@ -3,82 +3,96 @@ package com.example.myaply;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.security.crypto.EncryptedSharedPreferences;
-import androidx.security.crypto.MasterKeys;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private EditText etUsername, etPassword;
+    private Button btnLogin, btnGoToRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
-        EditText username = findViewById(R.id.username);
-        EditText password = findViewById(R.id.password);
-        Button loginButton = findViewById(R.id.loginButton);
-        Button registerButton = findViewById(R.id.registerButton);
+        etUsername = findViewById(R.id.username);
+        etPassword = findViewById(R.id.password);
+        btnLogin = findViewById(R.id.loginButton);
+        btnGoToRegister = findViewById(R.id.registerButton);
 
-        loginButton.setOnClickListener(view -> {
-            String user = username.getText().toString();
-            String pass = password.getText().toString();
-            login(user, pass);
-        });
-
-        registerButton.setOnClickListener(view -> openRegisterActivity());
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        btnLogin.setOnClickListener(v -> loginUser());
+        btnGoToRegister.setOnClickListener(v -> goToRegister());
     }
 
-    public void login(String user, String pass) {
-        SharedPreferences preferences = getEncryptedPreferences();
-        String savedUser = preferences.getString("registeredUser", "");
-        String savedPass = preferences.getString("registeredPass", "");
+    private void loginUser() {
+        String username = etUsername.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
 
-        if (user.equals(savedUser) && pass.equals(savedPass)) {
-            preferences.edit().putBoolean("isLoggedIn", true).apply();
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            Toast.makeText(this,"inicio correcto",Toast.LENGTH_SHORT).show();
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        SharedPreferences securePrefs = SecurePrefsUtil.getEncryptedPreferences(this);
+
+
+        String storedHash = securePrefs.getString("user_" + username + "_password", null);
+        if (storedHash == null) {
+            Toast toast = Toast.makeText(this, "Usuario no registradp", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 200); // Ajusta la posición
+            toast.show();
+
+            return;
+        }
+
+        if (BCrypt.checkpw(password, storedHash)) {
+            Toast.makeText(this, "Inicio de sesión exitoso!", Toast.LENGTH_SHORT).show();
+            securePrefs.edit()
+                    .remove("failed_" + username)
+                    .remove("blocked_" + username)
+                    .apply();
+            securePrefs.edit()
+                    .putBoolean("is_logged_in", true)
+                    .putString("current_user", username)
+                    .apply();
+            startActivity(new Intent(this, MainActivity.class));
             finish();
         } else {
-            Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+            handleFailedLogin(username);
+        }
+        long blockUntil = securePrefs.getLong("blocked_" + username, 0);
+        if (System.currentTimeMillis() < blockUntil) {
+            long minutesLeft = (blockUntil - System.currentTimeMillis()) / 60000;
+            Toast.makeText(this, "Cuenta bloqueada. Intente nuevamente en " + minutesLeft + " minutos", Toast.LENGTH_LONG).show();
+            return;
         }
     }
+    private void handleFailedLogin(String username) {
+        SharedPreferences securePrefs = SecurePrefsUtil.getEncryptedPreferences(this);
 
-    public void openRegisterActivity() {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
-    }
+        int failedAttempts = securePrefs.getInt("failed_" + username, 0) + 1;
+        securePrefs.edit().putInt("failed_" + username, failedAttempts).apply();
+
+        if (failedAttempts >= 3) {
+            long blockUntil = System.currentTimeMillis() + (5 * 60 * 1000);
+            securePrefs.edit().putLong("blocked_" + username, blockUntil).apply();
+
+            Toast.makeText(this, "Cuenta bloqueada por 5 minutos", Toast.LENGTH_LONG).show();
 
 
-    private SharedPreferences getEncryptedPreferences() {
-        try {
-            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-            return EncryptedSharedPreferences.create(
-                    "MySecurePrefs",
-                    masterKeyAlias,
-                    this,
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
-        } catch (GeneralSecurityException | IOException e) {
-            throw new RuntimeException("Error al crear EncryptedSharedPreferences", e);
+        } else {
+            int remaining = 3 - failedAttempts;
+            Toast.makeText(this, "Contraseña incorrecta. Intentos restantes: " + remaining, Toast.LENGTH_SHORT).show();
         }
+    }
+    private void goToRegister() {
+        startActivity(new Intent(this, RegisterActivity.class));
+        finish();
     }
 }

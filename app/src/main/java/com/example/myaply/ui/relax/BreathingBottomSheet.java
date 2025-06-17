@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 
 import com.example.myaply.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 
 public class BreathingBottomSheet extends BottomSheetDialogFragment {
 
@@ -36,7 +37,7 @@ public class BreathingBottomSheet extends BottomSheetDialogFragment {
     private long startTime;
 
     private long totalDurationMillis=60000;
-    private RadioGroup rgDuration;
+    private MaterialButtonToggleGroup rgDuration;
 
 
     private Runnable breathRunnable = new Runnable() {
@@ -56,10 +57,10 @@ public class BreathingBottomSheet extends BottomSheetDialogFragment {
             }
             int color = Color.BLUE;
             switch (step) {
-                case 0: color = Color.parseColor("#81D4FA"); break; // Inhala
-                case 1: color = Color.parseColor("#4FC3F7"); break; // Mantén
-                case 2: color = Color.parseColor("#0288D1"); break; // Exhala
-                case 3: color = Color.parseColor("#4FC3F7"); break; // Mantén
+                case 0: color = Color.parseColor("#A3E4FD"); break; // Inhala
+                case 1: color = Color.parseColor("#64B5F6"); break; // Mantén
+                case 2: color = Color.parseColor("#1565C0"); break; // Exhala
+                case 3: color = Color.parseColor("#64B5F6"); break; // Mantén
             }
             circleView.setBackgroundTintList(ColorStateList.valueOf(color));
             tvInstruction.setText(pattern[step]);
@@ -115,19 +116,15 @@ public class BreathingBottomSheet extends BottomSheetDialogFragment {
 
         return view;
     }
-    private long getSelectedDuration(RadioGroup rgDuration) {
-
-        rgDuration.setOnCheckedChangeListener((group, checkedId) -> {
-            checkedId = rgDuration.getCheckedRadioButtonId();
-            if (checkedId == R.id.rb_1_min) {
-                totalDurationMillis = 60000;
-            } else if (checkedId == R.id.rb_3_min) {
-                totalDurationMillis = 180000;
-            } else if (checkedId == R.id.rb_5_min) {
-                totalDurationMillis = 300000;
-            }
-
-        });
+    private long getSelectedDuration(MaterialButtonToggleGroup rgDuration) {
+        int checkedId=rgDuration.getCheckedButtonId();
+        if (checkedId == R.id.rb_1_min) {
+            totalDurationMillis= 60000;
+        } else if (checkedId == R.id.rb_3_min) {
+            totalDurationMillis= 180000;
+        } else if (checkedId == R.id.rb_5_min) {
+            totalDurationMillis= 300000;
+        }
         return totalDurationMillis;
     }
 
@@ -143,4 +140,3 @@ public class BreathingBottomSheet extends BottomSheetDialogFragment {
 
     }
 }
-

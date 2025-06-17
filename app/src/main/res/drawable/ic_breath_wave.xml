@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="150dp"
+    android:height="150dp"
+    android:viewportWidth="150"
+    android:viewportHeight="150">
+    <group android:name="waves">
+        <path
+            android:pathData="M75,10 a65,65 0 1,0 0,130 a65,65 0 1,0 0,-130z"
+            android:strokeColor="?attr/colorControlActivated"
+            android:strokeWidth="1"
+            android:fillColor="@android:color/transparent"/>
+        <path
+            android:pathData="M75,20 a55,55 0 1,0 0,110 a55,55 0 1,0 0,-110z"
+            android:strokeColor="?attr/colorControlActivated"
+            android:strokeWidth="0.5"
+            android:fillColor="@android:color/transparent"/>
+        <path
+            android:pathData="M75,30 a45,45 0 1,0 0,90 a45,45 0 1,0 0,-90z"
+            android:strokeColor="?attr/colorControlActivated"
+            android:strokeWidth="0.5"
+            android:fillColor="@android:color/transparent"/>
+        <path
+            android:pathData="M75,40 a35,35 0 1,0 0,70 a35,35 0 1,0 0,-70z"
+            android:strokeColor="?attr/colorControlActivated"
+            android:strokeWidth="1"
+            android:fillColor="@android:color/transparent"/>
+    </group>
+</vector>

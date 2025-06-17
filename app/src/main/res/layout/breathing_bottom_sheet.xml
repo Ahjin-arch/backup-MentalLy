@@ -2,60 +2,110 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="24dp"
-    android:background="@color/white"
-    >
+    android:padding="24dp">
 
     <TextView
         android:id="@+id/tv_breath_instruction"
-        android:text="Prepárate..."
+        android:text="@string/tvInstruction"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginBottom="24dp" />
 
-    <View
-        android:id="@+id/breath_circle"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:background="@drawable/circle_shape"
-        android:layout_margin="30dp"
-        />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp">
 
-    <Button
+        <View
+            android:id="@+id/breath_circle"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:background="@drawable/ic_breath_wave"
+            app:tint="?attr/colorControlActivated"
+            android:contentDescription="@string/txCircleBreath"
+            />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/circle_shape"
+            app:tint="?attr/colorControlActivated"
+            android:alpha="0.2"
+            android:contentDescription="@string/txCircleStatic"
+         />
+    </FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start_breathing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Comenzar"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:text="@string/txStart"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/green_pane"
-        />
-    <RadioGroup
-        android:id="@+id/rg_duration"
-        android:layout_width="wrap_content"
+        app:icon="@drawable/ic_play"
+    app:strokeColor="#FFFFFF"
+    app:rippleColor="#80FFFFFF"
+    app:cornerRadius="24dp"/>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        app:cardBackgroundColor="#20FFFFFF"
+        app:cardCornerRadius="12dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
-        >
+        android:layout_marginHorizontal="32dp">
 
-        <RadioButton android:id="@+id/rb_1_min"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1 min" />
-        <RadioButton
-            android:id="@+id/rb_3_min"
-            android:text="3 min"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:id="@+id/rb_5_min"
-            android:text="5 min"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </RadioGroup>
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_margin="8dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txDuration"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/rg_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:checkedButton="@id/rb_3_min">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/rb_1_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txOneMin"
+                    app:strokeColor="@android:color/transparent"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/rb_3_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txThreeMin"
+                    app:strokeColor="@android:color/transparent"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/rb_5_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txFiveMin"
+                    app:strokeColor="@android:color/transparent"/>
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

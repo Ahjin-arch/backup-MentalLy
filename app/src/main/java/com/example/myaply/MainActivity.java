@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        checkLoginStatus();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -41,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        SharedPreferences securePrefs = SecurePrefsUtil.getEncryptedPreferences(this);
+        boolean isLoggedIn = securePrefs.getBoolean("is_logged_in", false);
+
+        if (!isLoggedIn) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        } else {
+            String currentUser = securePrefs.getString("current_user", "");
+            setTitle("Bienvenido, " + currentUser);
+        }
         createNotificationChannel();
     }
 
@@ -55,31 +64,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkLoginStatus() {
-        SharedPreferences preferences = getEncryptedPreferences();
-        boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
-        if (!isLoggedIn) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        }
-    }
 
-    private SharedPreferences getEncryptedPreferences() {
-        try {
-            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-            return EncryptedSharedPreferences.create(
-                    "MySecurePrefs",
-                    masterKeyAlias,
-                    this,
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
-        } catch (GeneralSecurityException | IOException e) {
-            throw new RuntimeException("Error al crear EncryptedSharedPreferences", e);
-        }
-    }
 
 
 }

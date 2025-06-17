@@ -1,153 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    tools:context=".ui.relax.RelaxFragment"
+    android:fitsSystemWindows="true"
+    >
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        tools:context=".ui.relax.RelaxFragment"
-        android:fitsSystemWindows="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="?attr/actionBarSize"
         >
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_relax_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="@string/realaxtittle"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:shadowColor="@color/black"
+            android:shadowRadius="2"
+            android:textColor="@color/white"
+            />
 
-            <TextView
-                android:id="@+id/tv_relax_title"
+
+        <TextView
+            android:id="@+id/tv_relax_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/relaxtext"
+            android:textSize="18sp"
+            android:background="@drawable/card_overlay"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:paddingBottom="24dp"
+            android:lineSpacingExtra="4dp"
+            android:shadowColor="?attr/colorPrimary"/>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_break"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardPreventCornerOverlap="true">
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Relájate"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:paddingBottom="16dp"
-                android:textColor="@color/tour_pane" />
+                android:layout_height="match_parent"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_breath2"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/textbg_breath"/>
 
-            <TextView
-                android:id="@+id/tv_relax_subtitle"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/card_overlay"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/baseline_breath"
+                        app:tint="@color/white"
+                        android:contentDescription="@string/texticonbreath"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titlebreath"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:paddingTop="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/descriptionbreath"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:paddingTop="4dp"/>
+                </LinearLayout>
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_meditation"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            >
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Explora distintas actividades para calmarte y relajarte"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:paddingBottom="24dp"
-                android:textColor="@color/green_pane" />
+                android:layout_height="match_parent">
 
-            <GridLayout
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_meditation2"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/textbgmeditation"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/card_overlay"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/ic_meditation"
+                        app:tint="@color/white"
+                        android:contentDescription="@string/texticonmeditation"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titlemeditation"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:paddingTop="10dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/descriptionmeditation"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:paddingTop="4dp"/>
+                </LinearLayout>
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_sounds"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            >
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:rowCount="3"
-                android:alignmentMode="alignMargins"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp">
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_sounds2"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/textbgsounds"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/card_overlay"/>
 
                 <LinearLayout
-                    android:id="@+id/btn_break"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:padding="8dp"
-                    android:background="@drawable/bg_item_card"
-                    android:layout_margin="8dp">
+                    android:padding="16dp">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/baseline_relax"
-                        android:contentDescription="Respira" />
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/baseline_music"
+                        app:tint="@color/white"
+                        android:contentDescription="@string/texticonsounds"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Respira"
-                        android:textSize="14sp"
+                        android:text="@string/titlesounds"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:paddingTop="10dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/descriptionsounds"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
                         android:gravity="center"
-                        android:paddingTop="8dp" />
+                        android:paddingTop="4dp"/>
                 </LinearLayout>
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_muscle2"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/textbgMuscle"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/card_overlay"/>
 
                 <LinearLayout
-                    android:id="@+id/btn_meditation"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:padding="8dp"
-                    android:background="@drawable/bg_item_card"
-                    android:layout_margin="8dp">
+                    android:padding="16dp">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/baseline_relax"
-                        android:contentDescription="Meditación" />
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/baseline_self_meditation"
+                        app:tint="@color/white"
+                        android:contentDescription="@string/texticonMuscle"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Meditación"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:paddingTop="8dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/btn_sounds"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:background="@drawable/bg_item_card"
-                    android:layout_margin="8dp">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/baseline_relax"
-                        android:contentDescription="Sonidos relajantes" />
+                        android:text="@string/titleMuscle"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:paddingTop="10dp"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Sonidos"
-                        android:textSize="14sp"
+                        android:text="@string/descriptionMuscle"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
                         android:gravity="center"
-                        android:paddingTop="8dp" />
+                        android:paddingTop="4dp"/>
                 </LinearLayout>
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
-                <LinearLayout
-                    android:id="@+id/btn_exercise"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:background="@drawable/bg_item_card"
-                    android:layout_margin="8dp">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/baseline_relax"
-                        android:contentDescription="Relajación muscular" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Muscular"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:paddingTop="8dp" />
-                </LinearLayout>
-            </GridLayout>
-
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+</ScrollView>

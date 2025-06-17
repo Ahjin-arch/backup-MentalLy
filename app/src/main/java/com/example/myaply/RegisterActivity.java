@@ -15,31 +15,30 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKeys;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    private EditText etUsername, etPassword, etEmail;
+    private Button btnRegister,btnReturnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
 
-        EditText username = findViewById(R.id.username);
-        EditText password = findViewById(R.id.password);
-        EditText passwordVerifi = findViewById(R.id.passwordVerifi);
-        Button registerButton = findViewById(R.id.registerButton);
-        Button fini = findViewById(R.id.fini);
+         etUsername  = findViewById(R.id.username);
+         etPassword  = findViewById(R.id.password);
+         etEmail  = findViewById(R.id.passwordVerifi);
+         btnRegister  = findViewById(R.id.registerButton);
+         btnReturnLogin = findViewById(R.id.fini);
 
-        registerButton.setOnClickListener(view -> {
-            String user = username.getText().toString();
-            String pass = password.getText().toString();
-            String passVeri = passwordVerifi.getText().toString();
-            registerUser(user, pass, passVeri);
-        });
+        btnRegister.setOnClickListener(v -> registerUser());
 
-        fini.setOnClickListener(view -> returnLogin());
+
+        btnReturnLogin.setOnClickListener(view -> returnLogin());
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -54,44 +53,36 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    private void registerUser() {
+        String username = etUsername.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
-    private void registerUser(String user, String pass, String passVerifi) {
-        if (user.isEmpty() || pass.isEmpty() || passVerifi.isEmpty()) {
-            Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
+            Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (!pass.equals(passVerifi)) {
-            Toast.makeText(this, "Las contraseñas no coinciden.", Toast.LENGTH_SHORT).show();
+
+        SharedPreferences securePrefs = SecurePrefsUtil.getEncryptedPreferences(this);
+
+        if (securePrefs.contains("user_" + username)) {
+            Toast.makeText(this, "El nombre de usuario ya está registrado", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        SharedPreferences preferences = getEncryptedPreferences();
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("registeredUser", user);
-        editor.putString("registeredPass", pass);
-        editor.putBoolean("isLoggedIn", true);
-        editor.apply();
+        securePrefs.edit()
+                .putString("user_" + username + "_password", hashedPassword)
+                .putString("user_" + username + "_email", email)
+                .putBoolean("user_" + username + "_registered", true)
+                .apply();
 
-        Toast.makeText(this, "Registro exitoso. Bienvenido!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Registro exitoso!", Toast.LENGTH_SHORT).show();
 
-        returnLogin();
-
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
-    private SharedPreferences getEncryptedPreferences() {
-        try {
-            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-            return EncryptedSharedPreferences.create(
-                    "MySecurePrefs",
-                    masterKeyAlias,
-                    this,
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
-        } catch (GeneralSecurityException | IOException e) {
-            throw new RuntimeException("Error al crear EncryptedSharedPreferences", e);
-        }
-    }
 
 
 }

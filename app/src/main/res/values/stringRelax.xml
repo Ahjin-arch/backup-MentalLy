@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="realaxtittle">Relájate</string>
+    <string name="relaxtext">Explora distintas actividades para calmarte y relajarte</string>
+
+    <string name="textbg_breath">Fondo de respiración</string>
+    <string name="texticonbreath">icono de respiracion</string>
+    <string name="titlebreath">Respira</string>
+    <string name="descriptionbreath">Ejercicios guiados de respiracion</string>
+
+    <string name="textbgmeditation">Fondo de meditacion</string>
+    <string name="texticonmeditation">icono de meditacion</string>
+    <string name="titlemeditation">Meditación</string>
+    <string name="descriptionmeditation">Sesiones guiadas de meditacion</string>
+
+    <string name="textbgsounds">Fondo de sonidos </string>
+    <string name="texticonsounds">icono de sonidos</string>
+    <string name="titlesounds">Sonidos</string>
+    <string name="descriptionsounds">Naturaleza y ambientes relajantes</string>
+
+    <string name="textbgMuscle">Fondo de relajacion muscular </string>
+    <string name="texticonMuscle">icono de rejalacion muscular</string>
+    <string name="titleMuscle">Muscular</string>
+    <string name="descriptionMuscle">Relajación progresiva de relajacion muscular</string>
+
+    <string name="tvInstruction">Prepárate...</string>
+    <string name="txCircleBreath">Círculo de respiración</string>
+    <string name="txCircleStatic">Círculo estatico</string>
+    <string name="txStart">Comenzar</string>
+    <string name="txDuration">Duración:</string>
+    <string name="txOneMin">1 min</string>
+    <string name="txThreeMin">3 min</string>
+    <string name="txFiveMin">5 min</string>
+    <string name="n"> </string>
+
+</resources>

@@ -17,6 +17,7 @@ import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKeys;
 
 import com.example.myaply.LoginActivity;
+import com.example.myaply.SecurePrefsUtil;
 import com.example.myaply.databinding.FragmentHomeBinding;
 
 import java.io.IOException;
@@ -48,29 +49,14 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    public void logout() {
-        SharedPreferences preferences = getEncryptedPreferences();
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("isLoggedIn", false);
-        editor.apply();
+    private void logout() {
+        SharedPreferences securePrefs = SecurePrefsUtil.getEncryptedPreferences(getContext());
+        securePrefs.edit()
+                .putBoolean("is_logged_in", false)
+                .remove("current_user")
+                .apply();
 
-        Intent intent = new Intent(getContext(), LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
-    private SharedPreferences getEncryptedPreferences() {
-        try {
-            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-            return EncryptedSharedPreferences.create(
-                    "MySecurePrefs",
-                    masterKeyAlias,
-                    requireContext(),
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
-        } catch (GeneralSecurityException | IOException e) {
-            throw new RuntimeException("Error al crear EncryptedSharedPreferences", e);
-        }
+        startActivity(new Intent(getContext(), LoginActivity.class));
     }
 
 }

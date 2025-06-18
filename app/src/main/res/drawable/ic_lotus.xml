@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Silhouette of lotus flower in profile -->
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="nonZero"
+        android:pathData="M54,20c-20,0 -34,14 -34,34s14,34 34,34c12,0 22,-6 28,-15c-4,6 -10,10 -18,10c-12.1,0 -22,-9.9 -22,-22c0,-8 4,-15 10,-19c-2,6 -2,12 0,18c2.2,6.6 8.8,12 16,12c4,0 7,-1 10,-3c2,-8 2,-16 0,-24c-4,-2 -8,-2 -12,0c2,-10 8,-18 18,-20c-6,2 -10,8 -10,14c0,4 2,8 5,10c-8,-2 -14,-8 -14,-16c0,-6 4,-12 10,-14c-10,2 -18,10 -18,20c0,6 2,10 6,14c-6,-2 -10,-8 -10,-14c0,-4 2,-8 6,-10c-8,2 -14,8 -14,16c0,10 8,18 18,18c6,0 12,-3 16,-8c2,6 8,10 14,10c10,0 18,-8 18,-18c0,-20 -14,-34 -34,-34z"
+        android:strokeWidth="0" />
+</vector>

@@ -1,5 +1,8 @@
 package com.example.myaply.ui.relax;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
@@ -12,7 +15,9 @@ import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -21,6 +26,7 @@ import androidx.annotation.Nullable;
 
 import com.example.myaply.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -30,7 +36,7 @@ import java.util.Map;
 public class MeditationBottomSheet extends BottomSheetDialogFragment {
 
     private TextView tvPhrase;
-    private RadioGroup rgDuration;
+    private MaterialButtonToggleGroup rgDuration;
     private Button btnStart;
     private Handler handler = new Handler();
     private int currentPhraseIndex = 0;
@@ -40,7 +46,7 @@ public class MeditationBottomSheet extends BottomSheetDialogFragment {
     private CountDownTimer sessionTimer;
     private Vibrator vibrator;
     private MediaPlayer mediaPlayer;
-
+    private ObjectAnimator mandalaAnimator;
 
     @Nullable
     @Override
@@ -60,11 +66,14 @@ public class MeditationBottomSheet extends BottomSheetDialogFragment {
         tvPhrase = view.findViewById(R.id.tv_meditation_phrase);
         rgDuration = view.findViewById(R.id.rg_duration_meditation);
         btnStart = view.findViewById(R.id.btn_start_meditation);
+        ImageView mandala=view.findViewById(R.id.iv_focal_point);
+        setupMandalaAnimation(mandala);
+
 
         vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
 
         meditationPhrases = Arrays.asList(
-                "Inhala profundo... Exhala lento...",
+                "Respira profundamente...",
                 "Siente tu cuerpo en calma...",
                 "Deja pasar los pensamientos como nubes...",
                 "Estás aquí. Ahora. Presente.",
@@ -74,13 +83,22 @@ public class MeditationBottomSheet extends BottomSheetDialogFragment {
         btnStart.setOnClickListener(v -> {
             definirDuracion();
             iniciarMeditacion();
+            btnStart.setText(" ");
         });
 
         return view;
     }
+    private void setupMandalaAnimation(ImageView mandala) {
+        PropertyValuesHolder rotation = PropertyValuesHolder.ofFloat("rotation", 0f, 360f);
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(mandala, rotation);
+        animator.setDuration(60000);
+        animator.setRepeatCount(ValueAnimator.INFINITE);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.start();
 
+    }
     private void definirDuracion() {
-        int checkedId = rgDuration.getCheckedRadioButtonId();
+        int checkedId = rgDuration.getCheckedButtonId();
 
         Map<Integer, Long> durationMap = new HashMap<>();
         durationMap.put(R.id.rb_3_min, 180000L);
@@ -131,11 +149,24 @@ public class MeditationBottomSheet extends BottomSheetDialogFragment {
 
         String frase = meditationPhrases.get(currentPhraseIndex % meditationPhrases.size());
         currentPhraseIndex++;
-
-        // Animación suave
         tvPhrase.setAlpha(0f);
         tvPhrase.setText(frase);
         tvPhrase.animate().alpha(1f).setDuration(1000).start();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mandalaAnimator != null) {
+            mandalaAnimator.start();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mandalaAnimator != null && mandalaAnimator.isRunning()) {
+            mandalaAnimator.pause();
+        }
     }
 
     @Override

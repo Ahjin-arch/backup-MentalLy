@@ -31,6 +31,11 @@
     <string name="txOneMin">1 min</string>
     <string name="txThreeMin">3 min</string>
     <string name="txFiveMin">5 min</string>
+    <string name="txMandala">Punto focal para meditación mandala </string>
+    <string name="txPhrases">Encuentra tu calma... </string>
+    <string name="txStartMeditation">Iniciar Meditación </string>
     <string name="n"> </string>
+
+
 
 </resources>

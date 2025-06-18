@@ -28,7 +28,7 @@ public class RelaxFragment extends Fragment {
             soundBottomSheet.show(getParentFragmentManager(), "SoundBottomSheet");
         });
         //Solo acepta llamadas directas, caso contrario stop
-       view.findViewById(R.id.btn_break).setOnClickListener(v -> {
+       view.findViewById(R.id.btn_breathing).setOnClickListener(v -> {
             BreathingBottomSheet sheet = new BreathingBottomSheet();
             sheet.show(getParentFragmentManager(), "breathing_sheet");
         });

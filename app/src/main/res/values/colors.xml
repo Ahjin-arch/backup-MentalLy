@@ -32,4 +32,14 @@
     <color name="icon_reading_color">#4CAF50</color>
     <color name="icon_sleep_color">#BA68C8</color>
     <color name="icon_default_color">#757575</color>
+
+
+    <color name="background_meditation">#0D1B2A</color>
+    <color name="text_primary_meditation">#E0E1DD</color>
+
+
+    <color name="medi_bg1">#1a2a6c</color>
+    <color name="medi_bg2">#b21f1f</color>
+    <color name="medi_bg3">#fdbb2d</color>
+
 </resources>

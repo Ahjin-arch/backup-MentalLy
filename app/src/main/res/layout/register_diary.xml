@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:padding="16dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.habit.HabitFragment"
-    android:background="@drawable/bg_dialog_rounded"
-    >
+    android:background="@drawable/bg_dialog_rounded">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,15 +15,21 @@ android:padding="16dp"
         android:paddingBottom="16dp"
         android:background="@drawable/baseline_horizontal_rule_24"
         />
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="¿Cómo te sientes hoy?"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    android:layout_gravity="center"
-    android:paddingBottom="16dp" />
 
+    <TextView
+        android:id="@+id/tvRelaxInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Cómo te sientes hoy?"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:alpha="0"
+        android:textColor="?attr/colorOnSecondary"
+        tools:alpha="1"
+        android:layout_marginBottom="50dp"
+        />
 
 <RadioGroup
     android:id="@+id/rg_emotions"
@@ -111,12 +116,18 @@ android:padding="16dp"
     android:padding="16dp"
     android:layout_marginTop="16dp" />
 
-<Button
-    android:id="@+id/btn_save_emotion"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Guardar"
-    android:layout_marginTop="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save_emotion"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:text="Guardar"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        app:icon="@drawable/baseline_save"
+        app:strokeColor="#FFFFFF"
+        app:rippleColor="#80FFFFFF"
+        app:cornerRadius="24dp"/>
     <ImageView
         android:id="@+id/img_habit_add"
         android:layout_width="match_parent"

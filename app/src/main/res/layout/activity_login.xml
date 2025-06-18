@@ -48,7 +48,9 @@ android:transitionName="shared_element_container">
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_user"/>
+                android:drawableStart="@drawable/ic_user"
+                android:imeOptions="actionDone"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -63,6 +65,7 @@ android:transitionName="shared_element_container">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:imeOptions="actionDone"
                 android:drawableStart="@drawable/ic_password"/>
         </com.google.android.material.textfield.TextInputLayout>
 

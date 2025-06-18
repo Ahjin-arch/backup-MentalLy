@@ -1,6 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center_horizontal">
@@ -9,45 +11,52 @@
         android:id="@+id/tvRelaxInstruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Relajación muscular"
-        android:textSize="20sp"
+        android:text="Relajacion muscular"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:paddingBottom="24dp" />
-    <View
-        android:id="@+id/viewPulse"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/circle_bg"
-        android:layout_gravity="center"
-        android:layout_margin="40dp"
+        android:alpha="0"
+        tools:alpha="1"
+        android:layout_marginBottom="50dp"
         />
-
 
     <TextView
         android:id="@+id/tvMuscleStep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tensa los hombros"
-        android:textSize="18sp"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
         android:gravity="center"
-        android:paddingBottom="16dp" />
-
-    <ProgressBar
+        android:lineSpacingExtra="4dp"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:padding="16dp"
+        android:background="@drawable/bg_quote_card"
+        />
+    <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/pbMuscleProgress"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:max="100"
-        android:progress="0"
-        android:progressTint="@color/purple_500" />
-
-    <Button
-        android:id="@+id/btnStartMuscle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Iniciar"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/tour_pane" />
+        android:layout_height="12dp"
+        android:indeterminate="false"
+        android:max="100"
+        app:trackColor="#30FFFFFF"
+        app:trackCornerRadius="6dp"
+        app:indicatorColor="#FF80AB"
+        android:layout_marginTop="32dp"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStartMuscle"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:text="@string/txStart"
+        android:layout_marginTop="32dp"
+        app:icon="@drawable/baseline_start_muscle"
+        app:strokeColor="#FFFFFF"
+        app:rippleColor="#80FFFFFF"
+        app:cornerRadius="24dp"/>
 
 </LinearLayout>

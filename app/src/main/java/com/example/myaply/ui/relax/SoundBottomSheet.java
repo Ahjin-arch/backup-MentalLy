@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,32 +31,43 @@ public class SoundBottomSheet extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.fragment_sound_relax, container, false);
 
         // fondo
-
+        ScrollView scrollView =view.findViewById(R.id.container_sounds);
         ivBackground = view.findViewById(R.id.iv_background);
         //botones
         view.findViewById(R.id.btn_rain_sound).setOnClickListener(v -> {
             playSound(R.raw.rain);
-            changeBackground(R.drawable.rain_background);
+            changeBackground(R.drawable.rain1);
+            scrollView .post(() -> scrollView .scrollTo(0, 0));
+            messageslip();
         });
 
         view.findViewById(R.id.btn_forest_sound).setOnClickListener(v -> {
             playSound(R.raw.forest);
             changeBackground(R.drawable.forest_background);
-            Toast toast = Toast.makeText(getContext(), "Desliza hacia abajo", Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
-            toast.show();
+            scrollView .post(() -> scrollView .scrollTo(0, 0));
+
+            messageslip();
         });
         view.findViewById(R.id.btn_waves_sound).setOnClickListener(v -> {
             playSound(R.raw.waves);
-            changeBackground(R.drawable.waves_background);
+            changeBackground(R.drawable.waves2);
+            scrollView .post(() -> scrollView .scrollTo(0, 0));
+            messageslip();
         });
         view.findViewById(R.id.btn_fireplace_sound).setOnClickListener(v -> {
             playSound(R.raw.fireplace);
-            changeBackground(R.drawable.fireplace_background);
+            changeBackground(R.drawable.fireplace);
+            scrollView .post(() -> scrollView .scrollTo(0, 0));
+            messageslip();
         });
         return view;
     }
 
+    private void messageslip(){
+        Toast toast = Toast.makeText(getContext(), "Desliza hacia abajo", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
+        toast.show();
+    }
     private void playSound(int soundResId) {
         // Si hay un sonido reproduciéndose, detenerlo
         if (mediaPlayer != null) {

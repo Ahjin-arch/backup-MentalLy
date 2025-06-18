@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:id="@+id/container_sounds"
+    android:background="?android:attr/windowBackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@android:color/transparent"
         >
         <ImageView
             android:id="@+id/iv_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:contentDescription="Fondo dinámico" />
         <TextView
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:textStyle="bold"
             android:gravity="center"
             android:paddingBottom="16dp"
-            android:textColor="@color/green_pane" />
+             />
 
         <TextView
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             android:textSize="16sp"
             android:gravity="center"
             android:paddingBottom="24dp"
-            android:textColor="@color/purple_500" />
+             />
 
         <GridLayout
             android:layout_width="match_parent"
@@ -44,109 +44,155 @@
             android:alignmentMode="alignMargins"
             android:padding="8dp">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btn_rain_sound"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp"
-                android:background="@drawable/bg_item_card"
-                android:layout_margin="8dp">
-
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_rain"
-                    android:contentDescription="Sonido de lluvia" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lluvia"
-                    android:textSize="14sp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="#30FFFFFF"
+                app:strokeWidth="1dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
 
-            <LinearLayout
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_rain"
+                        app:tint="?attr/colorOnSecondary"
+                        android:contentDescription="Sonido de lluvia"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lluvia"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:paddingTop="12dp"
+                        />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btn_forest_sound"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp"
-                android:background="@drawable/bg_item_card"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="#30FFFFFF"
+                app:strokeWidth="1dp"
+                >
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_forest"
-                    android:contentDescription="Sonido de bosque" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bosque"
-                    android:textSize="14sp"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
 
-            <LinearLayout
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:tint="?attr/colorOnSecondary"
+                        android:src="@drawable/ic_forest"
+                        android:contentDescription="Sonido de bosque"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bosque"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:paddingTop="12dp"
+                        />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btn_waves_sound"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp"
-                android:background="@drawable/bg_item_card"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="#30FFFFFF"
+                app:strokeWidth="1dp"
+                >
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_waves"
-                    android:contentDescription="Sonido de olas" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Olas"
-                    android:textSize="14sp"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:tint="?attr/colorOnSecondary"
+                        android:src="@drawable/baseline_waves"
+                        android:contentDescription="Sonido de olas"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Olas"
+                        android:textSize="16sp"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:gravity="center"
+                        android:paddingTop="12dp"
+                       />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btn_fireplace_sound"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="8dp"
-                android:background="@drawable/bg_item_card"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeColor="#30FFFFFF"
+                app:strokeWidth="1dp"
+                >
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_fireplace"
-                    android:contentDescription="Sonido de chimenea" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Chimenea"
-                    android:textSize="14sp"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:paddingTop="8dp" />
-            </LinearLayout>
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:tint="?attr/colorOnSecondary"
+                        android:src="@drawable/baseline_local_fire"
+                        android:contentDescription="Sonido de chimenea"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fuego"
+                        android:textColor="?attr/colorOnSecondary"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:paddingTop="12dp"
+                    />
+
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </GridLayout>
     </LinearLayout>

@@ -22,11 +22,12 @@ import androidx.annotation.Nullable;
 
 import com.example.myaply.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 public class MuscleRelaxBottomSheet extends BottomSheetDialogFragment {
 
     private TextView tvMuscleStep;
-    private ProgressBar pbProgress;
+    private LinearProgressIndicator pbProgress;
     private Vibrator vibrator;
 
 

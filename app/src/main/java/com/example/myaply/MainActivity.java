@@ -6,29 +6,38 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.example.myaply.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.security.crypto.EncryptedSharedPreferences;
-import androidx.security.crypto.MasterKeys;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        boolean isDarkMode = sharedPreferences.getBoolean("darkMode", false);
+        int wallpaperId = sharedPreferences.getInt("wallpaper", R.id.radioWallpaper1);
+
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -40,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        wallpaper(wallpaperId);
+
         SharedPreferences securePrefs = SecurePrefsUtil.getEncryptedPreferences(this);
         boolean isLoggedIn = securePrefs.getBoolean("is_logged_in", false);
 
@@ -50,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
             String currentUser = securePrefs.getString("current_user", "");
             setTitle("Bienvenido, " + currentUser);
         }
+
+
         createNotificationChannel();
     }
 
@@ -63,8 +76,18 @@ public class MainActivity extends AppCompatActivity {
             manager.createNotificationChannel(channel);
         }
     }
+public void wallpaper(int wallpaperId){
+    ImageView fondo = findViewById(R.id.imageViewWallpaper);
+        if (wallpaperId == R.id.radioWallpaper1) {
+        fondo.setImageResource(R.drawable.bg_breath2);
+    } else if (wallpaperId == R.id.radioWallpaper2) {
+        fondo.setImageResource(R.drawable.bg_muscle2);
+    }else if (wallpaperId == R.id.radioWallpaper3) {
+            fondo.setImageResource(R.drawable.bg_sounds2);
+        }
+        else if (wallpaperId == R.id.radioWallpaper4) {
+            fondo.setImageResource(R.drawable.bg_meditation2);
+        }
 
-
-
-
+}
 }

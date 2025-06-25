@@ -4,5 +4,5 @@
     <gradient
         android:startColor="@android:color/transparent"
         android:endColor="?android:attr/windowBackground"
-        android:angle="270" /> <!-- 90 para un degradado vertical de arriba a abajo -->
+        android:angle="270" />
 </shape>

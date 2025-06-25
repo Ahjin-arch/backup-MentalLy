@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.habit.HabitFragment"
+    tools:context=".ui.emotion.EmotionFragment"
     android:background="@drawable/bg_dialog_rounded">
     <TextView
         android:layout_width="wrap_content"
@@ -25,9 +25,7 @@
         android:layout_gravity="center"
         android:textStyle="bold"
         android:gravity="center"
-        android:alpha="0"
-        android:textColor="?attr/colorOnSecondary"
-        tools:alpha="1"
+        android:textColor="?android:attr/colorAccent"
         android:layout_marginBottom="50dp"
         />
 

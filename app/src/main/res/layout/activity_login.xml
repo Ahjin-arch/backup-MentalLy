@@ -27,15 +27,25 @@ android:transitionName="shared_element_container">
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="26dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:gravity="center"
         >
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inicie sesion con Psico"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:textColor="@color/white"
+            android:background="@drawable/card_overlay"
+            />
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="358dp"
             android:layout_height="236dp"
             android:contentDescription="@string/iconText"
-            app:srcCompat="@drawable/ic_dashboard_black_24dp"
+            app:srcCompat="@drawable/baseline_login"
+            app:tint="?attr/colorOnSecondary"
             android:paddingBottom="10dp"
             android:layout_margin="10dp" />
 
@@ -49,7 +59,7 @@ android:transitionName="shared_element_container">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_user"
-                android:imeOptions="actionDone"
+                android:inputType="text"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +78,15 @@ android:transitionName="shared_element_container">
                 android:imeOptions="actionDone"
                 android:drawableStart="@drawable/ic_password"/>
         </com.google.android.material.textfield.TextInputLayout>
-
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Olvidó su contraseña?"
+            android:textColor="@android:color/holo_blue_bright"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:clickable="true"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/loginButton"
             android:layout_width="320dp"
@@ -76,21 +94,41 @@ android:transitionName="shared_element_container">
             android:text="@string/login"
             android:layout_margin="10dp"
             app:cornerRadius="8dp"
-            app:rippleColor="?attr/colorOnSecondary"
-            />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/registerButton"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:text="@string/register"
-            app:cornerRadius="8dp"
-            android:layout_margin="10dp"
-            app:rippleColor="?attr/colorOnSecondary"
+            android:background="@drawable/btn_background"
+            android:textColor="?attr/colorOnSecondary"
             />
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_height="match_parent"
+            android:text="@string/register"
+            android:textColor="?attr/colorOnSecondary"
+            android:background="@drawable/btn_background"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBiometric"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_height="match_parent"
+            android:text="Iniciar con huella"
+            android:textColor="?attr/colorOnSecondary"
+            android:drawableStart="@drawable/baseline_fingerprint_24"
+            android:background="@drawable/btn_background"
+
+            />
+
+    </LinearLayout>
 
 </FrameLayout>

@@ -1,34 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.MyAply" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/teal_200</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <!-- Customize your theme here.
-        iconos en seleccion activa
-        fondo
-        al hacer clic de floatbutton
-        transparecia de la barra superior
-         barra inferior
-         color sombra
-        -->
-        <item name="textAppearanceLabelLarge">@color/white</item>
-        <item name="colorOnSurface">#5DD381</item>
+        <!-- Colores principales -->
+        <item name="colorPrimary">#4CAF91</item> <!-- Verde calmante -->
+        <item name="colorPrimaryVariant">#388E7B</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <item name="colorSecondary">#A7D8C2</item> <!-- Verde menta suave -->
+        <item name="colorSecondaryVariant">#81C3A0</item>
+        <item name="colorOnSecondary">#1B3B2F</item>
+
+        <!-- Superficies y fondos -->
+        <item name="colorSurface">#FAFAFA</item>
+        <item name="colorOnSurface">#2E4A3F</item>
+
+        <item name="colorOnBackground">#2E4A3F</item>
+
+        <!-- Elevación y overlays -->
+        <item name="elevationOverlayEnabled">true</item>
+
+        <!-- Personalización adicional -->
         <item name="android:windowBackground">@color/white</item>
-        <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="elevationOverlayEnabled">true</item>
-        <item name="colorSurface">@color/semi_white</item>
-
-
-
 
     </style>
+
 </resources>

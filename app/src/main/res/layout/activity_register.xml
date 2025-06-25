@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
+    android:fitsSystemWindows="true"
     android:transitionName="shared_element_container">
 
 
@@ -24,17 +25,28 @@
         android:background="@drawable/half_screen_gradient" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="16dp"
         android:padding="26dp"
         android:gravity="center"
         >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrate en Psico"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:textColor="@color/white"
+            android:background="@drawable/card_overlay"
+            />
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="358dp"
             android:layout_height="236dp"
             android:contentDescription="@string/iconText"
-            app:srcCompat="@drawable/ic_dashboard_black_24dp"
+            app:srcCompat="@drawable/baseline_app_registration_24"
+            app:tint="?attr/colorOnSecondary"
             android:paddingBottom="10dp"
             android:layout_margin="10dp" />
 
@@ -45,6 +57,7 @@
             android:padding="10dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_user"/>
@@ -68,7 +81,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="email"
+            android:hint="@string/email"
             android:padding="10dp"
             >
             <com.google.android.material.textfield.TextInputEditText
@@ -80,24 +93,31 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/registerButton"
-            android:layout_width="320dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/register"
-            android:layout_margin="10dp"
-            app:cornerRadius="8dp"
-            app:rippleColor="?attr/colorOnSecondary"
+            android:textColor="?attr/colorOnSecondary"
+            android:background="@drawable/btn_background"
             />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
         <com.google.android.material.button.MaterialButton
             android:id="@+id/fini"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:text="@string/returne"
-            android:layout_margin="10dp"
-            app:cornerRadius="8dp"
-            app:rippleColor="?attr/colorOnSecondary"
+            android:textColor="?attr/colorOnSecondary"
+            android:background="@drawable/btn_background"
             />
-
     </LinearLayout>
 </FrameLayout>

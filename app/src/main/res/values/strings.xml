@@ -21,4 +21,5 @@
     <string name="userText">campo de usuario</string>
     <string name="passwordText">campo de contraseña</string>
     <string name="returne">atras</string>
+    <string name="email">Email</string>
 </resources>

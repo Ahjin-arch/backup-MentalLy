@@ -20,7 +20,7 @@
 
     <color name="semi_white">#FFFFFFFF</color>
     <color name="semi_grey">#43FFFFFF</color>
-
+    <color name="semi_grey2">#AA858181</color>
     <color name="habit_progress_tint">#4CAF50</color>
     <color name="habit_progress_background">#E0E0E0</color>
     <color name="habit_streak_color">#FF9800</color>

@@ -106,7 +106,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nombreHabit"
-            android:padding="10dp">
+            android:padding="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:endIconMode="clear_text">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_habit_name"
                 android:layout_width="match_parent"
@@ -119,7 +125,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/descripcion"
-            android:padding="10dp">
+            android:padding="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:endIconMode="clear_text">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_habit_description"
                 android:layout_width="match_parent"
@@ -187,9 +199,9 @@
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:text="@string/guardarhabito"
-            app:cornerRadius="8dp"
+            app:cornerRadius="16dp"
             app:icon="@drawable/baseline_save"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             app:rippleColor="?attr/colorOnSecondary"
             />
 

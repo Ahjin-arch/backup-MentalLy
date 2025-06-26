@@ -13,16 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:liftOnScroll="true"
+        android:backgroundTint="@color/semi_grey"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_launcher_foreground"
-            android:background="@color/teal_700"
-            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/baseline_home_24"
             app:title="@string/app_name"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             app:menu="@menu/top_app_bar" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -35,6 +38,7 @@
 
         <!-- Welcome Message -->
         <TextView
+            android:gravity="center"
             android:id="@+id/tvWelcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -3,14 +3,18 @@ package com.example.myaply.ui.home;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -102,7 +106,7 @@ public class HomeFragment extends Fragment {
         topBar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.action_logout) {
                 Toast.makeText(getContext(), "logout", Toast.LENGTH_SHORT).show();
-                logout();
+                logoutMessage();
                 return true;
             }
 
@@ -116,11 +120,11 @@ public class HomeFragment extends Fragment {
             if (item.getItemId() == R.id.action_about) {
                 new MaterialAlertDialogBuilder(requireContext())
                         .setTitle("Acerca de esta aplicación")
-                        .setMessage("Esta aplicación fue desarrollada con el " +
+                        .setMessage("Esta es una aplicacion con el " +
                                 "objetivo de ayudarte a crear una experiencia de relajación y enfoque. " +
                                 "\n\nIncluye herramientas como fondos personalizables, modo oscuro, " +
-                                "y módulos de respiración guiada. \n\nDesarrollador:" +
-                                " \nJorge\nJose\nVersión: 1.0" +
+                                "y funciones de respiración guiada. \n\nColaboradores:" +
+                                " \nJorge\nJose\nBrayan\nVictor\nJose\nVersión: 1.0" +
                                 "\n\nGracias por usar esta app. Tu bienestar mental es importante!!")
                         .setPositiveButton("Cerrar", (dialog, which) -> dialog.dismiss())
                         .show();
@@ -130,6 +134,41 @@ public class HomeFragment extends Fragment {
             return false;
         });
     }
+
+    private void logoutMessage(){
+
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext());
+        builder.setTitle("Cerrar sesión")
+                .setMessage("Estas seguro de que quieres cerrar sesión?")
+                .setPositiveButton("Confirmar", (dialog, which) -> {
+                    logout();
+                    dialog.dismiss();
+                })
+                .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog dialog = builder.create();
+        dialog.setOnShowListener(d -> {
+            Drawable iconClose = ContextCompat.getDrawable(requireContext(), R.drawable.baseline_logout);
+            Drawable iconCancel = ContextCompat.getDrawable(requireContext(), R.drawable.baseline_cancel_24);
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+            if (iconClose != null) {
+                iconClose.setBounds(0, 0, 30, 30); // Ajusta tamaño si es necesario
+                positiveButton.setCompoundDrawables(iconClose, null, null, null);
+            }
+
+            if (iconCancel != null) {
+                iconCancel.setBounds(0, 0, 30, 30);
+                negativeButton.setCompoundDrawables(iconCancel, null, null, null);
+            }
+            dialog.setIcon(R.drawable.baseline_dangerous_24);
+        });
+
+        dialog.show();
+
+    }
+
+
     private void logout() {
         SharedPreferences securePrefs = SecurePrefsUtil.getEncryptedPreferences(getContext());
         securePrefs.edit()

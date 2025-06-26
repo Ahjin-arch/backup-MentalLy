@@ -7,15 +7,7 @@
     android:padding="16dp"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.emotion.EmotionFragment"
-    android:background="@drawable/bg_dialog_rounded">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingBottom="16dp"
-        android:background="@drawable/baseline_horizontal_rule_24"
-        />
-
+    >
     <TextView
         android:id="@+id/tvRelaxInstruction"
         android:layout_width="wrap_content"
@@ -28,7 +20,20 @@
         android:textColor="?android:attr/colorAccent"
         android:layout_marginBottom="50dp"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_rounded_card"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecciona tu emoción"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp"/>
 <RadioGroup
     android:id="@+id/rg_emotions"
     android:layout_width="match_parent"
@@ -42,7 +47,7 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="Feliz"
-        android:drawableTop="@drawable/bg_happy"
+        android:drawableTop="@drawable/baseline_emoji_emotions_24"
         android:button="@null"
         android:gravity="center"
         android:padding="8dp"
@@ -55,7 +60,7 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="Triste"
-        android:drawableTop="@drawable/bg_sad"
+        android:drawableTop="@drawable/baseline_sad"
         android:button="@null"
         android:gravity="center"
         android:padding="8dp"
@@ -71,61 +76,77 @@
         android:button="@null"
         android:gravity="center"
         android:padding="8dp"
-        android:drawableTop="@drawable/bg_angry"
+        android:drawableTop="@drawable/baseline_sick_24"
         android:background="@drawable/bg_emotion_selector"
         />
 
 </RadioGroup>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="16dp">
+        android:orientation="vertical"
+        android:background="@drawable/bg_rounded_card"
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Intensidad"
+            android:text="Intensidad de la emocion"
             android:textSize="16sp"
             android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/tv_intensity_value"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textStyle="bold"/>
-    </LinearLayout>
-
-
     <SeekBar
         android:id="@+id/seekBar_intensity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="10" />
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="¿Por qué te sientes así?"
+        android:padding="8dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:endIconMode="clear_text"
+        app:startIconContentDescription="@string/iconText">
 
-    <EditText
-    android:id="@+id/et_comment_emotion"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="¿Por qué te sientes así?"
-    android:inputType="textMultiLine"
-    android:gravity="top"
-    android:padding="16dp"
-    android:layout_marginTop="16dp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_comment_emotion"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:inputType="text"
+            android:gravity="top|start"
+            android:imeOptions="actionDone"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_save_emotion"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
-        android:text="Guardar"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Guardar emoción"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
         app:icon="@drawable/baseline_save"
-        app:strokeColor="#FFFFFF"
-        app:rippleColor="#80FFFFFF"
-        app:cornerRadius="24dp"/>
+        app:iconSize="24dp"
+        app:iconGravity="textStart"
+        app:cornerRadius="28dp"
+        app:strokeColor="#30FFFFFF"
+        app:strokeWidth="1dp"
+        app:rippleColor="#B388FF"/>
     <ImageView
         android:id="@+id/img_habit_add"
         android:layout_width="match_parent"

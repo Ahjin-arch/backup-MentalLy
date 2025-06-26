@@ -20,6 +20,6 @@
     <string name="registerText">boton de registro de usuario</string>
     <string name="userText">campo de usuario</string>
     <string name="passwordText">campo de contraseña</string>
-    <string name="returne">atras</string>
+    <string name="returne">Volver a inicio de sesión</string>
     <string name="email">Email</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.myaply.ui.relax;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,11 @@ public class RelaxFragment extends Fragment {
         view.findViewById(R.id.btn_meditation).setOnClickListener(v -> {
             MeditationBottomSheet sheet = new MeditationBottomSheet();
             sheet.show(getParentFragmentManager(), "meditation_relax_sheet");
+        });
+
+        view.findViewById(R.id.btn_searchOre).setOnClickListener(v -> {
+            BuscaminasBottomSheet sheet = new BuscaminasBottomSheet();
+            sheet.show(getParentFragmentManager(), "BuscaminasBottomSheet");
         });
 
 

@@ -44,4 +44,23 @@ public class SecurePrefsUtil {
                 .remove("current_user")
                 .apply();
     }
+    public static void resetFailedAttempts(Context context, String username) {
+        SharedPreferences prefs = getEncryptedPreferences(context);
+        prefs.edit()
+                .remove("failed_" + username)
+                .remove("blocked_" + username)
+                .apply();
+    }
+
+    public static boolean isAccountBlocked(Context context, String username) {
+        SharedPreferences prefs = getEncryptedPreferences(context);
+        long blockUntil = prefs.getLong("blocked_" + username, 0);
+        return System.currentTimeMillis() < blockUntil;
+    }
+
+    public static int getRemainingAttempts(Context context, String username) {
+        SharedPreferences prefs = getEncryptedPreferences(context);
+        int failedAttempts = prefs.getInt("failed_" + username, 0);
+        return Math.max(0, 3 - failedAttempts);
+    }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sound_ambience">
+        <item>Ninguno</item>
+        <item>Lluvia suave</item>
+        <item>Bosque tranquilo</item>
+        <item>Olas del mar</item>
+        <item>Sonidos tibetanos</item>
+        <item>Fuego crepitante</item>
+    </string-array>
+</resources>

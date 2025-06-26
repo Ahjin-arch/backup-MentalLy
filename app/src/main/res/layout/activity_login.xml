@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/main"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".LoginActivity"
-android:transitionName="shared_element_container">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:transitionName="shared_element_container">
 
 
     <ImageView
@@ -30,67 +29,149 @@ android:transitionName="shared_element_container">
         android:gravity="center"
         >
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="358dp"
-            android:layout_height="236dp"
-            android:contentDescription="@string/iconText"
-            app:srcCompat="@drawable/ic_dashboard_black_24dp"
-            android:paddingBottom="10dp"
-            android:layout_margin="10dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="80dp"
+                android:layout_height="200dp"
+                android:contentDescription="@string/iconText"
+                app:srcCompat="@drawable/baseline_login"
+                android:background="@drawable/btn_background"
+                app:tint="?attr/colorOnSecondary"
+                android:paddingBottom="10dp"
+                android:layout_margin="10dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/user"
-            android:padding="10dp">
+            android:padding="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_user"
+            app:startIconContentDescription="@string/iconText">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_user"
-                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:imeOptions="actionNext"
                 />
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:padding="10dp"
+            android:padding="8dp"
+            app:startIconDrawable="@drawable/ic_password"
             app:endIconMode="password_toggle">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:imeOptions="actionDone"
-                android:drawableStart="@drawable/ic_password"/>
+               />
         </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="¿Olvidó su contraseña?"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/loginButton"
-            android:layout_width="320dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:text="@string/login"
-            android:layout_margin="10dp"
-            app:cornerRadius="8dp"
-            app:rippleColor="?attr/colorOnSecondary"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_margin="8dp"
+            android:textColor="?attr/colorOnSecondary"
+            app:icon="@drawable/baseline_arrow_forward_24"
+            app:iconGravity="textEnd"
+            app:iconPadding="12dp"
+            android:background="@drawable/btn_background"
             />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/registerButton"
-            android:layout_width="320dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register"
-            app:cornerRadius="8dp"
-            android:layout_margin="10dp"
-            app:rippleColor="?attr/colorOnSecondary"
+            android:text="o"
+            android:textStyle="bold"
+            android:textSize="24dp"
+
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBiometric"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_height="match_parent"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_margin="8dp"
+            android:text="Iniciar con huella"
+            android:textColor="?attr/colorOnSecondary"
+            app:icon="@drawable/baseline_fingerprint_24"
+            android:background="@drawable/btn_background"
+
             />
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuevo usuario?"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="16dp"
+            android:layout_marginStart="16dp"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_height="match_parent"
+            android:text="@string/register"
+            android:textAllCaps="false"
+
+            app:icon="@drawable/baseline_app_registration_24"
+            android:textColor="?attr/colorOnSecondary"
+            android:background="@drawable/btn_background"
+            />
+
+
+    </LinearLayout>
 
 </FrameLayout>

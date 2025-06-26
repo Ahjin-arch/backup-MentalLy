@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
+    android:fitsSystemWindows="true"
     android:transitionName="shared_element_container">
 
 
@@ -24,30 +25,56 @@
         android:background="@drawable/half_screen_gradient" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="16dp"
         android:padding="26dp"
         android:gravity="center"
         >
+
+
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="358dp"
-            android:layout_height="236dp"
+            android:layout_width="80dp"
+            android:layout_height="200dp"
             android:contentDescription="@string/iconText"
-            app:srcCompat="@drawable/ic_dashboard_black_24dp"
-            android:paddingBottom="10dp"
-            android:layout_margin="10dp" />
+            app:srcCompat="@drawable/baseline_app_registration_24"
+            android:background="@drawable/btn_background"
+            app:tint="?attr/colorOnSecondary"
+            android:paddingBottom="8dp"
+            android:layout_margin="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crear nuevo usuario"
+            android:textStyle="bold"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textSize="24dp"
+            android:textColor="@color/white"
+            android:background="@drawable/card_overlay"
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/user"
-            android:padding="10dp">
+
+            android:padding="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_user"
+            >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_user"/>
+            />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -55,49 +82,80 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:padding="10dp"
+            android:padding="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:startIconDrawable="@drawable/ic_password"
             app:endIconMode="password_toggle">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:drawableStart="@drawable/ic_password"/>
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="email"
-            android:padding="10dp"
+            android:hint="@string/email"
+            android:padding="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/baseline_mail"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordVerifi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:drawableStart="@drawable/baseline_mail"/>
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/registerButton"
-            android:layout_width="320dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/register"
-            android:layout_margin="10dp"
-            app:cornerRadius="8dp"
-            app:rippleColor="?attr/colorOnSecondary"
+            android:layout_margin="8dp"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnSecondary"
+            android:background="@drawable/btn_background"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ya tienes una cuenta?"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSecondary"
+            android:textSize="16dp"
+            android:layout_marginStart="16dp"
             />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/fini"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/returne"
-            android:layout_margin="10dp"
-            app:cornerRadius="8dp"
-            app:rippleColor="?attr/colorOnSecondary"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnSecondary"
+            android:background="@drawable/btn_background"
             />
-
     </LinearLayout>
 </FrameLayout>

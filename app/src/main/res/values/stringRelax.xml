@@ -23,6 +23,12 @@
     <string name="titleMuscle">Muscular</string>
     <string name="descriptionMuscle">Relajación progresiva de relajacion muscular</string>
 
+
+    <string name="textbgSearchOre">Fondo de busca minas </string>
+    <string name="texticonSearchOre">icono de busca minas</string>
+    <string name="titleSearchOre">Busca Minas</string>
+    <string name="descriptionSearchOre">Relajación con juego BuscaMimas</string>
+
     <string name="tvInstruction">Prepárate...</string>
     <string name="txCircleBreath">Círculo de respiración</string>
     <string name="txCircleStatic">Círculo estatico</string>
@@ -34,8 +40,12 @@
     <string name="txMandala">Punto focal para meditación mandala </string>
     <string name="txPhrases">Encuentra tu calma... </string>
     <string name="txStartMeditation">Iniciar Meditación </string>
-    <string name="n"> </string>
 
+
+    <string name="muscle_relaxation_title">Relajación muscular</string>
+    <string name="default_muscle_step">Indiracador de grupo muscular</string>
+    <string name="muscle_illustration_desc">Ilusatracion de grupo muscular </string>
+    <string name="timeZero">00:00</string>
 
 
 </resources>
